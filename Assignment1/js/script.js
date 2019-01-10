@@ -13,6 +13,9 @@ color: '#ccc55'
 let food = {
 x:0,
 y:0,
+vx:0,
+vy:0,
+speed:30,
 size: 100,
 color:'#ccc55'
 }
@@ -20,8 +23,13 @@ color:'#ccc55'
 function setup() {
 createCanvas(windowWidth, windowHeight);
 noCursor();
-food.x = random(0,width);
-food.y = random(0,height);
+food.x = food.vx;
+food.y = food.vy;
+food.vx = food.speed;
+food.vy = food.speed;
+
+const AVATAR_SIZE_GAIN = 50;
+const AVATAR_SIZE_LOSS = 1;
 
 }
 
@@ -30,8 +38,10 @@ background(0);
 if (avatar.active === true){
 
 updateAvatar();
+updateFood();
 displayAvatar();
 displayFood();
+
 checkCollision();
 }
 }
@@ -46,6 +56,18 @@ function updateAvatar() {
     avatar.active = false;
   }
 
+}
+
+function updateFood()  {
+  food.x += food.vx;
+  food.y += food.vy;
+
+  if (food.x - food.size/2 < 0 || food.x + food.size/2 > height) {
+      food.vx = -food.vx;
+  }
+    if (food.y - food.size/2 < 0 || food.y + food.size/2 > height) {
+        food.vy = -food.vy;
+    }
 }
 
 function displayAvatar() {
