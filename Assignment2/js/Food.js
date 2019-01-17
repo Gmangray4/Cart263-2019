@@ -25,10 +25,7 @@ if (this.x - this.size/2 < 0 || this.x + this.size/2 > width) {
     this.x = random(0,width);
     this.y = random(0,height);
     this.size = random(this.minSize,this.maxSize);
-    this.vx = random(1,30);
-    this.vy = random(1,30);
+    this.vx = random(1,50);
+    this.vy = random(1,50);
   }
-
-
-
 }
