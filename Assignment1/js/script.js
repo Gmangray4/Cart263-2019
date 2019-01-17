@@ -60,11 +60,11 @@ function updateFood()  {
   food.x += food.vx;
   food.y += food.vy;
 
-  if (food.x - food.size/2 < 0 || food.x + food.size/2 > windowWidth) {
+  if (food.x - food.size/2 < 0 || food.x + food.size/2 > width) {
       food.vx = -food.vx;
 
   }
-    if (food.y - food.size/2 < 0 || food.y + food.size/2 > windowHeight) {
+    if (food.y - food.size/2 < 0 || food.y + food.size/2 > height) {
         food.vy = -food.vy;
     }
 }
