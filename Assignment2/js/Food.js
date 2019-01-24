@@ -8,7 +8,7 @@ class Food extends Agent {
     this.vx = maxSpeed;
     this.vy = maxSpeed;
   }
-
+  
 update(){
 this.x += this.vx;
 this.y += this.vy;
@@ -24,7 +24,7 @@ if (this.x + this.size/2 > width) {
   }
   if (this.y + this.size/2 > height) {
       this.vy = random(-30,-1);
-  }  
+  }
 
   if (random() < 0.1) {
     this.vx = random(-30, 30);
@@ -40,4 +40,5 @@ if (this.x + this.size/2 > width) {
     this.vx = random(-30,30);
     this.vy = random(-30,30);
   }
+
 }
