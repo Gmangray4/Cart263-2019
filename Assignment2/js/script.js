@@ -16,7 +16,6 @@ function setup() {
   for (let i = 0; i < 15; i++){
   food.push(new Food(random(0,width),random(0,height),FOOD_MIN_SIZE,FOOD_MAX_SIZE,FOOD_MAX_SPEED));
 }
-
   noCursor();
 }
 
@@ -29,7 +28,6 @@ function draw() {
     avatar.eat(food[i]);
   }
 }
-
   for (let i = 0; i < food.length; i++) {
     food[i].update();
     food[i].display();

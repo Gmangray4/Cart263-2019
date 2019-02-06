@@ -13,7 +13,6 @@ display(){
   if (!this.active)
   return; {
   }
-
   push();
   noStroke();
   fill(this.color);

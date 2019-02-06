@@ -1,0 +1,11 @@
+/*
+background color
+*/
+body {
+  background-color: lightgreen;
+}
+
+span {
+  font-style: italic;
+  font-size: 25px;
+}

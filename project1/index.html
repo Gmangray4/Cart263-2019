@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+
+  <!-- CSS stylesheet(s) -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+  <!-- Libraries -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+  <link rel="stylesheer" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+
+  <!-- for popups-->
+  <title>dialog demo</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- My script(s) -->
+  <script src="js/script.js"></script>
+
+</head>
+
+<body>
+  <!-- Counts the fail attpmts(s) -->
+<span> Fails: </span> <span id="fail"> 0 </span>
+<br>
+<!-- Counts the bails eaten(s) -->
+
+<span> Eaten:</span><span id="haybailEatenCount"> 0 </span>
+<br>
+
+<br>
+<div style=" height: 100%; width: 100%;">
+  <!-- Images -->
+<img id="barn" src="assets/images/Barn.png" height="300" width="285">
+<img id="haybail" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="haybail2" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="haybail3" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="haybail4" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="haybail5" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="haybail6" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="haybail7" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="haybail8" src="assets/images/hay_bail.png" height="150" width="150">
+<img id="horse" src="assets/images/horse_0.png" height="120" width="120">
+<!-- pop up menu for Farmer Joe -->
+<div id="Farmer_Joe" title="Farmer Joe">
+  <!-- id to change the paragrahp for what Farmer Joe says-->
+<p id="JoeP">
+Hey there buddy we need to get all the haybails in for the night. Do you think you can drag them in?
+</p> </div>
+<!-- pop up menu for the player's characters mind -->
+<div id="Player" title="Self">
+  <!-- to change the paragrahp for what player's characters thoughts-->
+<p id="PlayerP">
+</p> </div>
+</div>
+</body>
+</html>
