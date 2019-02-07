@@ -452,7 +452,7 @@ function bailEatenTalk (event,ui) {
       JoeShout();
     }
     if (joeText == 10) {
-      document.getElementById("JoeP").innerHTML = "Do you want to see the font end of my tracker boy? Then continue to not bring in my bales and you’ll be as lucky as that groundhog last week!";
+      document.getElementById("JoeP").innerHTML = "Do you want to see the front end of my tracker boy? Then continue to not bring in my bales and you’ll be as lucky as that groundhog last week!";
       $( "#Farmer_Joe" ).dialog({ autoOpen: false });
       $( "#Farmer_Joe" ).dialog( "open" );
       JoeShout();
