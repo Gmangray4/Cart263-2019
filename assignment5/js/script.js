@@ -190,12 +190,25 @@ function setup() {
       $('#score').text(score);
       speakAnimal(correctAnimal);
     },
-    '*correctAnimal' : function() {
-      $('.guess').remove();
-      newRound();
-      $(this).addClass('#score');
-      score ++;
-      $('#score').text(score);
+    // '*correctAnimal' : function() {
+    //   $('.guess').remove();
+    //   newRound();
+    //   $(this).addClass('#score');
+    //   score ++;
+    //   $('#score').text(score);
+    // },
+
+    'The answer is *answers' : function() {
+      if(correctAnimal === answers[indexAnswer]){
+        $('.guess').remove();
+        newRound();
+        $(this).addClass('#score');
+        score ++;
+        $('#score').text(scoreelse{
+
+      }else{
+        alert("Wrong answer");
+      }
     },
     'I give up': function() {
       console.log("Don't give up!");
