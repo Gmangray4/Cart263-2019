@@ -206,8 +206,7 @@ alert(answers[indexAnswer]);
         newRound();
         $(this).addClass('#score');
         score ++;
-        $('#score').text(score) {
-
+        $('#score').text(score) 
       }else{
         alert("Wrong answer");
       }
