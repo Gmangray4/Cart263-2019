@@ -183,6 +183,20 @@ function setup() {
   if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
+    'the anwser is *wrongAnswers' : function() {
+      console.log("You answered " + wrongAnswers);
+      $(this).addClass('#score');
+      score = 0;
+      $('#score').text(score);
+      speakAnimal(correctAnimal);
+    },
+    'the anwser is *correctAnimal' : function() {
+      $('.guess').remove();
+      newRound();
+      $(this).addClass('#score');
+      score ++;
+      $('#score').text(score);
+    },
     'I give up': function() {
       console.log("Don't give up!");
     $('.guess').remove();
@@ -194,20 +208,6 @@ function setup() {
   'Say it again': function() {
     console.log("I say it works");
   speakAnimal(correctAnimal);
-},
-'The anwser is *wrongAnswers' : function() {
-  console.log("You answered " + wrongAnswers);
-  $(this).addClass('#score');
-  score = 0;
-  $('#score').text(score);
-  speakAnimal(correctAnimal);
-},
-'The anwser is *correctAnimal' : function() {
-  $('.guess').remove();
-  newRound();
-  $(this).addClass('#score');
-  score ++;
-  $('#score').text(score);
 },
 };
 }
