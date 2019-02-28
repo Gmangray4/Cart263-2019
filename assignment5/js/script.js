@@ -183,13 +183,13 @@ function setup() {
   if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
-    '*wrongAnswers' : function() {
-      console.log("You answered " + wrongAnswers);
-      $(this).addClass('#score');
-      score = 0;
-      $('#score').text(score);
-      speakAnimal(correctAnimal);
-    },
+    // '*wrongAnswers' : function() {
+    //   console.log("You answered " + wrongAnswers);
+    //   $(this).addClass('#score');
+    //   score = 0;
+    //   $('#score').text(score);
+    //   speakAnimal(correctAnimal);
+    // },
     // '*correctAnimal' : function() {
     //   $('.guess').remove();
     //   newRound();
