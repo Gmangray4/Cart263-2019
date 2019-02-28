@@ -199,6 +199,8 @@ function setup() {
     // },
 
     'The answer is *answers' : function() {
+alert(answers[indexAnswer]);
+
       if(correctAnimal === answers[indexAnswer]){
         $('.guess').remove();
         newRound();
