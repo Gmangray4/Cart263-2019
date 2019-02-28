@@ -169,6 +169,8 @@ let score = 0;
 
 let indexAnswer;
 
+let wrongAnswers = [];
+
 
 // Get setup!
 $(document).ready(setup);
@@ -183,33 +185,22 @@ function setup() {
   if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
-    // '*wrongAnswers' : function() {
-    //   console.log("You answered " + wrongAnswers);
-    //   $(this).addClass('#score');
-    //   score = 0;
-    //   $('#score').text(score);
-    //   speakAnimal(correctAnimal);
-    // },
-    // '*correctAnimal' : function() {
-    //   $('.guess').remove();
-    //   newRound();
-    //   $(this).addClass('#score');
-    //   score ++;
-    //   $('#score').text(score); aaa
-    // },
-
-    'The answer is *answers' : function() {
-alert(answers[indexAnswer]);
-
-      if(correctAnimal === answers[indexAnswer]){
-        $('.guess').remove();
-        newRound();
-        $(this).addClass('#score');
-        score ++;
-        $('#score').text(score)
-      }else{
-        alert("Wrong answer");
-      }
+    'it is *tag' : function(tag) {
+if (correctAnimal === tag.toLowerCase()){
+      console.log("You answered right");
+      $('.guess').remove();
+       newRound();
+       $(this).addClass('#score');
+       score ++;
+       $('#score').text(score);
+}
+else
+{
+  $(this).addClass('#score');
+  score = 0;
+  $('#score').text(score);
+  speakAnimal(correctAnimal);
+}
     },
     'I give up': function() {
       console.log("Don't give up!");
@@ -245,7 +236,6 @@ function startGame() {
 // Generates a set of possible answers randomly from the set of animals
 // and adds buttons for each one. Then chooses the correct answer randomly.
 
-let wrongAnswers = [];
 
 function newRound() {
   // We empty the answer array for the new round
@@ -263,6 +253,7 @@ indexAnswer = Math.floor(Math.random() * answers.length);
   // Choose a random answer from the answers as our correct answer
   correctAnimal = answers[indexAnswer];
 
+//llll
 for (let i = 0; i < NUM_OPTIONS; i++) {
   if(answers[i] != correctAnimal)
     wrongAnswers.push(answers[i]);
