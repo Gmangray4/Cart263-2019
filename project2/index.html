@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+  <meta name="author" content="Gordon Gray"/>
+<meta name="description" content=" Yu-meme-oh: a card meme generator based on the Yugioh card game."/>
+<meta name="generator" content=" created with Atom"/>
+<meta name="keyword" content="memes, cards, generator, yu-gi-oh"/>
+<title>Yu-Meme-Oh!!!</title>
+  <!-- CSS stylesheet(s) -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- Libraries -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+  <!-- My script(s) -->
+  <script src="js/script.js"></script>
+</head>
+<body>
+  <div class="main-content">
+  <!-- Div that holds all other divs of the page  -->
+  </div>
+  <div class="top">
+      <!-- Div that is the header of the page-->
+    <h1>Yu-Meme-Oh!!!</h1>
+    <button onclick="changeAll()">Yu-Meme-Oh!!!</button>
+    <!-- button that changes and randomizes the cards-->
+  </div>
+  <div class="mid">
+      <!-- Div that is the container for where all card divs rest.-->
+    <div id="gameCard" class="card">
+    <!-- Div that makes up a full card -->
+      <div id="boxTitle" class="title">
+      <!-- Div for the card's title box -->
+        <h3 id="cardTitle"></h3>
+        <div class="attribute">
+          <!-- Div for the card's attribute -->
+          <img id="cardAttribute" src="assets/images/attribute/icon1.png" class="attribute">
+              <!-- image for attribute -->
+        </div>
+      </div>
+      <div id ="divCardLevel" class="level">
+        <!-- Div for the card's level -->
+      </div>
+      <div class="face">
+        <!-- Div for the card's face images -->
+        <img id="cardFace" src="assets/images/face/1.png" class="face">
+        <!-- face images of the card -->
+      </div>
+      <div id="boxBottom" class="cardbottom">
+        <!-- Div for the card's bottom box -->
+        <h5 id="cardType"></h5>
+        <div id="boxText" class="text">
+          <!-- Div for the card's text -->
+          <p id="cardText" class="text"></p>
+        </div>
+          <p id ="cardDef" class="def"></p>
+          <p id ="cardAtk" class="atk"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <!-- Div the webpages instructions and about-->
+    <h2>Instructions/About:</h2>
+    <p class="webpagetext">Yu-meme-oh is a parody on the Manga and trading card game Yugioh by Kazuki Takahashi and Konami. Yu-meme-oh takes random meme images and turns them into cards similar to Yugioh but looks definitely. The cards have a title, attribute, type, level, effect , attack and defence which are find on
+      <br><br>
+      To randomize the cards, just say Yu-meme-oh into your microphone or click the Yu-meme-oh button on the top left of the webpage.
+</p>
+  <br><br>
+  <!-- here to exent the webpage a liitle so it looks like there's space to breathe in-->
+  </div>
+</div>
+</body>
+
+</html>

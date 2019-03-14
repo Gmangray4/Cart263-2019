@@ -235,8 +235,6 @@ function startGame() {
 //
 // Generates a set of possible answers randomly from the set of animals
 // and adds buttons for each one. Then chooses the correct answer randomly.
-
-
 function newRound() {
   // We empty the answer array for the new round
   answers = [];

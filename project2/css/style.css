@@ -1,0 +1,273 @@
+/*********************************************
+
+This is the style file for Yu-Meme-Oh!!!
+**********************************************/
+
+body{
+max-width: 1000%;
+background-color: black;
+height: 100%;
+width: 100%;
+overflow-x: hidden;
+overflow-y: auto;
+	}
+
+h1{
+	font-size: 3em;
+	color: Red;
+	width: 6.9em;
+	height: 8em;
+	margin: 10px auto auto 1em;
+	float: left;
+
+	/* font-size: 1.5em;
+	width: 7em;
+	height: 8em;
+	margin: 1em auto auto 2em; */
+}
+
+h2{
+	font-size: 2em;
+	color: White;
+	margin: 5px;
+}
+
+h3{
+	width: 13em;
+	height: 2em;
+	margin: 1px;
+	float: left;
+	}
+
+h5	{
+		font-size: 15px;
+		width: 35em;
+		height: 1em;
+		float: left;
+		margin: 5px;
+		}
+
+/* for the div that holds all other dives in the webpage */
+div.main-content {
+	border: none;
+		border-color:black;
+				margin: 0;
+				z-index: 0;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		width: 100%;
+		height: 100%;
+}
+
+/* for the top div */
+div.top{
+	background-color: #01001A;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+  border: none;
+		border-color:black;
+        margin: 0;
+        z-index: 0;
+		overflow-x: hidden;
+		overflow-y: hidden;
+    width: 100%;
+    height: 5em;
+}
+/* for the center div that holds the cards in it's center*/
+div.mid {
+    background-image: url("../assets/images/background/bg11.png");
+	  background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+
+    border: none;
+      border-color:black;
+          margin: 0;
+          z-index: 0;
+        overflow-x: hidden;
+      	overflow-y: hidden;
+      width: 100%;
+      height: 30em;
+
+  }
+
+/* for the center div found at the bottom of the page*/
+div.bottom {
+  background-color: #01001A;
+  border: none;
+    border-color:black;
+        margin: 0;
+        z-index: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: auto;
+}
+
+/* for the div that makes up the card on the page*/
+div.card {
+  background-color: blue;
+  border: none;
+    border-color:black;
+        z-index: 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    width: 21em;
+    height: 28em;
+    margin: 1em auto;
+		box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* for the div that is used for the card's title*/
+div.title {
+	text-transform: capitalize;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: yellow;
+  z-index: 0;
+width: 20em;
+height: 3em;
+margin: 2% 2% 0% 3%;
+}
+
+/* for the div that is used for the card's attribute*/
+div.attribute {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: none;
+  z-index: 0;
+  float: right;
+width: 2.5em;
+height: 2.5em;
+margin: 1% 1% 1% 1%;
+}
+
+/* for the div that is used for the card's level*/
+div.level {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  z-index: 0;
+  background-color: none;
+width: 19.5em;
+height: 2em;
+margin: 1% 1% 1% 5%;
+}
+/* for the div that is used for the card's face*/
+div.face {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: green;
+  margin: 0;
+  z-index: 0;
+width: 19.2em;
+height: 13.5em;
+margin: 1% 1% 1% 5%;
+}
+/* for the div that is used for the card's bottom*/
+div.cardbottom {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: brown;
+  margin: 0;
+  z-index: 0;
+width: 19.4em;
+height: 7.5em;
+margin: 2% 1% 2% 4%;
+}
+/* for the div that is used for the card's type name*/
+div.type {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: pink;
+  margin: 0;
+  z-index: 0;
+width: 10em;
+height: 1em;
+margin: 2% 1% 1% 4%;
+}
+/* for the div that is used for the card's text infromation*/
+div.text {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: pink;
+  margin: 0;
+  z-index: 0;
+width: 18em;
+height: 5em;
+margin: 1% 1% 1% 4%;
+text-transform: lowercase;
+}
+
+/* for paragarhs on the webpage*/
+p.webpagetext {
+  color: White;
+	margin: 1em 3em 0em 2em;
+}
+/* for paragarhs on the cards text */
+p.text{
+	font-size: 0.72em;
+  margin: 2px;
+  float: left;
+}
+/* for paragarhs that make the cards attack text */
+p.atk {
+	font-size: 0.8em;
+  margin: 0.5px;
+  float: right;
+/* width: 3em;
+height: 1em; */
+/* margin: 1% 1% 1% 1%; */
+}
+
+p.def {
+/* for paragarhs that make the cards deffence text */
+	font-size: 0.8em;
+	  margin: 0.5px;
+	  float: right;
+}
+
+/* for images that are create for the cards face  */
+img.face {
+	width: 19.2em;
+	height: 13.5em;
+}
+/* for images that are create for the cards attribute  */
+img.attribute {
+	width: 2.5em;
+	height: 2.5em;
+}
+/* for any images that are create for the cards level  */
+img.level {
+	width: 1.5em;
+	height: 1.5em;
+	float: right;
+}
+/* for the button on the webpage  */
+button{
+	background-color: Orange;
+	float: right;
+	margin: 1em 2em 1em 1em;
+	height: 4em;
+	width: 10em;
+}
+
+/* makes adjustments when the screens window becomes less then 730px */
+@media screen and (max-width: 730px) {
+	h1{
+		font-size: 1.5em;
+		width: 7em;
+		height: 8em;
+		margin: 1em auto auto 2em;
+
+	}
+/* makes adjustments when the screens window becomes less then 430px */
+@media screen and (max-width: 430px) {
+	h1{
+		font-size: 1.5em;
+		width: 7em;
+		height: 8em;
+		margin: 1em auto auto 2em;
+
+	}
+}
