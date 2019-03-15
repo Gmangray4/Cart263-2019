@@ -107,7 +107,7 @@ creatures = creaturesArray[Math.floor(Math.random() * creaturesArray.length)];
 console.log(cat);
 
 checkVowels();
-description = `${condiment} ${verb} like ${aForCat} ${cat} in ${aForRoom} ${room}, perfroming ${aForActions} ${actions} on ${aForCreatures} ${creatures}.`;
+description = `${condiment} ${verb} like ${aForCat} ${cat} in ${aForRoom} ${room}, performing ${aForActions} ${actions} on ${aForCreatures} ${creatures}.`;
 // Finally, we add it to the page and hey presto!
 text.innerText = description;
 // $('body').append(description);
