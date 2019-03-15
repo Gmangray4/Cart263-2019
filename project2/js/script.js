@@ -7816,8 +7816,8 @@ function setup() {
   if (annyang) {
     // Let's define our first command. First the text we expect, and then the function it should call
     var commands = {
-      // If "Yu meme oh" is said then change the card
-      'Yu meme oh': function() {
+      // If "Yu meYu me oh" is said then change the card
+      'change': function() {
         console.log("Yu meme of is heard");
         // fuction to change the card
         changeAll();
