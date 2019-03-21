@@ -1,0 +1,73 @@
+/*********************************************
+
+Here is a description of any special CSS used.
+In this case it's just padding and margin to 0
+so the canvas is flush with the top left corner.
+
+**********************************************/
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* div {
+    display: block;
+}
+
+.slider-group {
+    margin-bottom: 10px;
+}
+
+.slider {
+    height: 34px;
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -1px;
+    padding: 0px 0px 0px 0px;
+    border: solid 2px #D8D6D6;
+    overflow: hidden;
+}
+
+.slider-value {
+    height: 34px;
+    width: 50px;
+    display: inline-block;
+    border-left: solid 2px #ccc;
+    float: right;
+    line-height: 34px;
+    vertical-align: middle;
+    padding-left: 3px;
+    background: #EAE9E9;
+    font-size: 0.9em;
+}
+
+label {
+    cursor: default;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    line-height: 34px;
+    vertical-align: middle;
+    width: 250px;
+    padding-top: 8px;
+}
+
+input {
+    line-height: normal;
+}
+
+input[type="range" i] {
+    -webkit-appearance: slider-horizontal;
+    color: rgb(144, 144, 144);
+    cursor: default;
+    padding: initial;
+    border: initial;
+    margin: 2px;
+}
+
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb !important;
+} */
