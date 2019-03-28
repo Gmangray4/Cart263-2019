@@ -50,7 +50,7 @@ div.characterWindow{
         overflow-x: hidden;
       	overflow-y: hidden;
       width: 100%;
-      height: 30em;
+      height: 25em;
 
   }
   div.bottomBox {
@@ -62,5 +62,12 @@ div.characterWindow{
       overflow-x: hidden;
       overflow-y: hidden;
       width: 100%;
-      height: 5em;
+      height: 10em;
   }
+img.dude{
+   display: block;
+  width: auto;
+  height: auto;
+  margin: 5.5em auto;
+
+}
