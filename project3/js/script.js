@@ -18,20 +18,21 @@ let keys = {};
 const input = document.querySelector('input');
 const log = document.getElementById('log');
 
+$(document).ready(setup);
+
 function setup(){
-
+$(document).on("keyup",keyUp);
+$(document).on("keydown",keyDown);
 }
 
-function draw(){
-checkKey();
-console.log(logkey);
+
+function keyDown(e){
+console.log("keyDown");
+console.log(heldKey);
+heldKey = e.keyCode;
 }
 
-function checkKey(){
-input.addEventListener('keydown', logKey);
-
-}
-
-function logKey(e) {
-  log.textContent == e;
+function keyUp(e){
+console.log("KeyUp");
+heldKey = undefined;
 }
