@@ -100,7 +100,7 @@ function setup() {
 // playes the horse cry sound file and animates the horse on chlick
   $horse.on('mousedown',function () {
 horseCrySFX.play();
-    horseAinmate();
+    horseAtmate();
   });
   // chckes the horseanimates when off click so that the horse goes back to the stances it should.
   $horse.on('mouseup',function () {

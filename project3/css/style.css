@@ -38,8 +38,8 @@ div.main {
 		height: 100%;
 }
 
-div.characterWindow{
-    background-color: red;
+div.gameWindow{
+    background-color: white;
 	  background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
@@ -50,10 +50,39 @@ div.characterWindow{
         overflow-x: hidden;
       	overflow-y: hidden;
       width: 100%;
-      height: 25em;
+    height:90vh;
 
   }
-  div.bottomBox {
+	div.Player1Window{
+	    background-color: blue;
+		  background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+	    border: none;
+	      border-color:black;
+	          margin: 0;
+	          z-index: 0;
+	        overflow-x: hidden;
+	      	overflow-y: hidden;
+	      width: 50%;
+	    height:90vh;
+	  }
+		div.Player2Window{
+				background-color: red;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				border: none;
+					border-color:black;
+							margin: 0;
+							z-index: 0;
+						overflow-x: hidden;
+						overflow-y: hidden;
+					width: 50%;
+				height:90vh;
+						float: right;
+			}
+  /* div.bottomBox {
     background-color: Green;
     border: none;
       border-color:black;
@@ -63,11 +92,16 @@ div.characterWindow{
       overflow-y: hidden;
       width: 100%;
       height: 10em;
-  }
-img.dude{
+  } */
+/* img.dude{
    display: block;
   width: auto;
   height: auto;
-  margin: 5.5em auto;
+  margin: 5.5em auto; */
+}
 
+img.memeImg {
+z-index: 2;
+display: run-in;
+position:  absolute;
 }
