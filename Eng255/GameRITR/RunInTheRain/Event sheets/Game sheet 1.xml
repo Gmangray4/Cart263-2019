@@ -1,0 +1,701 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Game sheet 1</name>
+    <events>
+        <include>Menu sheet 1</include>
+        <variable constant="0" name="TouchDeadDog" sid="621921210116121" static="0" type="number">0</variable>
+        <variable constant="0" name="TouchFogottenBud" sid="572589330207841" static="0" type="number">0</variable>
+        <variable constant="0" name="TouchHouse" sid="653716929416370" static="0" type="number">0</variable>
+        <variable constant="0" name="Score" sid="866069034093251" static="0" type="number">0</variable>
+        <variable constant="0" name="RainSpeed" sid="981502436741760" static="0" type="number">1</variable>
+        <variable constant="0" name="Hp" sid="442060743804380" static="0" type="number">800</variable>
+        <event-group description="" sid="817348418521778" title="Movement">
+            <sub-events>
+                <event-block sid="955834620261460">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="601997724769921" type="Keyboard">
+                            <param id="0" name="Key">39</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="829936121969368" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="872206672653394" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="822618932785934" type="Player">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="487218056781785">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="161048843334210" type="Keyboard">
+                            <param id="0" name="Key">37</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="948017193543912" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="224693020296002" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="694355494750528" type="Player">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="662642190449260">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="333524048355271" type="Player" />
+                        <condition behavior="Platform" id="0" name="Is moving" sid="262421180984543" type="Player" />
+                        <condition id="-14" name="Compare variable" sid="682086627976259" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="338773328473719" type="Player">
+                            <param id="0" name="Animation">&quot;run&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="520422992207739">
+                    <conditions>
+                        <condition behavior="Platform" id="5" name="On jump" sid="394732557411084" type="Player" />
+                        <condition id="-14" name="Compare variable" sid="129391002098102" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="655399250923927" type="Player">
+                            <param id="0" name="Animation">&quot;jump&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="520242500155726">
+                    <conditions>
+                        <condition behavior="Platform" id="4" name="Is falling" sid="531658728590198" type="Player" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="450466635684774" type="Player">
+                            <param id="0" name="Animation">&quot;fall&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="965169218140444">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="294380249055289" type="Player" />
+                        <condition behavior="Platform" id="0" inverted="1" name="Is moving" sid="886650865613467" type="Player" />
+                        <condition id="-14" name="Compare variable" sid="501920031096357" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="444803255885129" type="Player">
+                            <param id="0" name="Animation">&quot;idle&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="912294789855246" title="Cam/Score">
+            <sub-events>
+                <event-block sid="127126154318372">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="627999476909407" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="558088601961146" type="Camra">
+                            <param id="0" name="X">lerp(self.X, Player.X + 80 , 01)</param>
+                            <param id="1" name="Y">lerp(self.Y, Player.Y + 30, 01)</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="513518705274067" type="HpBar">
+                            <param id="0" name="X">Camra.X - 400</param>
+                            <param id="1" name="Y">Camra.Y - 210</param>
+                        </action>
+                        <action id="-17" name="Move forward" sid="162647113035219" type="Rain">
+                            <param id="0" name="Distance">RainSpeed</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="849356601433658" type="HpBar">
+                            <param id="0" name="Width">Hp</param>
+                        </action>
+                        <action id="22" name="Set paused" sid="334455635956786" type="Audio">
+                            <param id="0" name="Tag">&quot;bgm&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="378466571340053" type="ScoreText">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.Y - 100</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="249541432506327" type="ScorePopUpText">
+                            <param id="0" name="X">Player.X - 70</param>
+                            <param id="1" name="Y">Player.Y - 100</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="868832722892832" type="GameOverButton">
+                            <param id="0" name="X">Player.X - 80</param>
+                            <param id="1" name="Y">Player.Y + 100</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="712479788714233" type="KeepRuningText">
+                            <param id="0" name="X">Player.X + 30</param>
+                            <param id="1" name="Y">Player.Y - 80</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="394305146803621" type="ScorePopUp">
+                            <param id="0" name="X">Player.X - 80</param>
+                            <param id="1" name="Y">Player.Y - 100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="699893119931735">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="710824257702770" type="Player">
+                            <param id="0" name="Object">Dead_Dog</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="103403104852466" type="System">
+                            <param id="0" name="Variable">TouchDeadDog</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="521787505964819" type="System">
+                            <param id="0" name="Variable">TouchDeadDog</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="182929060148890">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="476757746737503" type="Player">
+                            <param id="0" name="Object">Dead_Dog</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="263377426200359" type="ScorePopUp">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="729995132554512">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="629950632190226" type="Player">
+                            <param id="0" name="Object">ForgottenBud</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="791672354926699" type="System">
+                            <param id="0" name="Variable">TouchFogottenBud</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="655702749282262" type="System">
+                            <param id="0" name="Variable">TouchFogottenBud</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="809068735405019">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="115299093657818" type="Player">
+                            <param id="0" name="Object">ForgottenBud</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="472626777086248" type="ScorePopUp">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="473572594344422">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="626207040352423" type="Player">
+                            <param id="0" name="Object">Sprite4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="126060620451752" type="KeepRuningText">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="179228967429930" type="ScorePopUp">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="394549682147680">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="148104776253921" type="Player">
+                            <param id="0" name="Object">Sprite4</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="269686528071203" type="System">
+                            <param id="0" name="Variable">TouchHouse</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="624358871987096" type="System">
+                            <param id="0" name="Variable">TouchHouse</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="800065400050649">
+                    <conditions>
+                        <condition id="-9" name="Is visible" sid="712009129275474" type="KeepRuningText" />
+                        <condition id="-6" name="Every X seconds" sid="409313123583292" type="System">
+                            <param id="0" name="Interval (seconds)">3.0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="923547547630822" type="KeepRuningText">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="888372179471808">
+                    <conditions>
+                        <condition id="-9" name="Is visible" sid="736770072322430" type="ScorePopUp" />
+                        <condition id="-6" name="Every X seconds" sid="865714604974980" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="883868461683933" type="ScorePopUp">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="628125902742129" title="Rain">
+            <sub-events>
+                <event-block sid="849653948645075">
+                    <conditions>
+                        <condition id="-3" inverted="1" name="Is on-screen" sid="104624961453706" type="Rain" />
+                        <condition id="-8" name="Compare two values" sid="215126787349253" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="22" name="Set paused" sid="886368555780575" type="Audio">
+                            <param id="0" name="Tag">&quot;rainbgm&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="860109818497884">
+                    <conditions>
+                        <condition id="-3" name="Is on-screen" sid="379390916825251" type="Rain" />
+                        <condition id="-8" name="Compare two values" sid="911594465267974" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="22" name="Set paused" sid="287845014493298" type="Audio">
+                            <param id="0" name="Tag">&quot;rainbgm&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="287899538000234">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="954570884266300" type="Rain">
+                            <param id="0" name="Object">NoRainZone</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="192839335129311" type="Rain">
+                            <param id="0" name="Y">-129.5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="731854497476845">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="752318847038463" type="Rain">
+                            <param id="0" name="Object">NoRain2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="119713143401066" type="Rain">
+                            <param id="0" name="Y">-757.5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="331733254541985">
+                    <conditions>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="229821564690300" type="Rain">
+                            <param id="0" name="Object">NoRainZone</param>
+                        </condition>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="758673210220306" type="Rain">
+                            <param id="0" name="Object">NoRain2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="415208955233584" type="Rain">
+                            <param id="0" name="Y">1139</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="872682732235046">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="199890671219306" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="704647516962262" type="System">
+                            <param id="0" name="Interval (seconds)">5.0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="346013602107646" type="System">
+                            <param id="0" name="Variable">RainSpeed</param>
+                            <param id="1" name="Value">0.3</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="300008024356684" title="Heath">
+            <sub-events>
+                <event-block sid="721546739106504">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="244823107186515" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="648231903017480" type="Player">
+                            <param id="0" name="Object">Rain</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="449184571540796" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="225838305265821">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="450337887615697" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">800</param>
+                        </condition>
+                        <condition id="1" name="Is overlapping another object" sid="447285884944872" type="Player">
+                            <param id="0" name="Object">Rain</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="733732770086455" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="115875468215026">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="218475940690609" type="Player" />
+                        <condition id="-14" name="Compare variable" sid="613220174818391" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="770149263783648" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="227941724783136" type="Player">
+                            <param id="0" name="Animation">&quot;death&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Platform" id="4" name="Set jump strength" sid="916163902511035" type="Player">
+                            <param id="0" name="Jump strength">0</param>
+                        </action>
+                        <action behavior="Platform" id="1" name="Set max speed" sid="183084818051724" type="Player">
+                            <param id="0" name="Max Speed">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="815872874198452" title="Pasue">
+            <sub-events>
+                <event-block sid="622346962594105">
+                    <conditions>
+                        <condition id="4" name="On key code pressed" sid="312766084149047" type="Keyboard">
+                            <param id="0" name="Keycode">80</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="899554787656223" type="System">
+                            <param id="0" name="Time scale">1 - timescale</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="657081119295002">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="838441333801584" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="22" name="Set paused" sid="900487433426405" type="Audio">
+                            <param id="0" name="Tag">&quot;bgm&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="22" name="Set paused" sid="819818427083198" type="Audio">
+                            <param id="0" name="Tag">&quot;rainbgm&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="2" name="Set visible" sid="713416055737595" type="GameOverButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="316460558128129">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="140464180569821" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="502492767733241" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set visible" sid="559069933420858" type="GameOverButton">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="627844297847891">
+                    <conditions>
+                        <condition id="4" name="On key code pressed" sid="938784883944501" type="Keyboard">
+                            <param id="0" name="Keycode">82</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="910070376824734" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-26" name="Restart layout" sid="758491193043323" type="System" />
+                        <action id="-9" name="Set value" sid="633026098629593" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Value">800</param>
+                        </action>
+                        <action id="-13" name="Set time scale" sid="898301562116369" type="System">
+                            <param id="0" name="Time scale">1 - timescale</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="601465633705010" type="System">
+                            <param id="0" name="Variable">RainSpeed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="481364084555012" type="System">
+                            <param id="0" name="Variable">TouchDeadDog</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="562823521262826" type="System">
+                            <param id="0" name="Variable">TouchFogottenBud</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="831088816510922" type="System">
+                            <param id="0" name="Variable">TouchHouse</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="635002186981039">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="406747505094651" type="GameOverButton" />
+                        <condition id="-8" name="Compare two values" sid="756574511311014" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="915111313144913" type="System">
+                            <param id="0" name="Layout">Menu</param>
+                        </action>
+                        <action id="-13" name="Set time scale" sid="763853730900422" type="System">
+                            <param id="0" name="Time scale">1 - timescale</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="156975101510460" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Value">800</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="105517836039846" type="System">
+                            <param id="0" name="Variable">RainSpeed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="977034190462181" type="System">
+                            <param id="0" name="Variable">TouchDeadDog</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="409988199739582" type="System">
+                            <param id="0" name="Variable">TouchFogottenBud</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="743511485321920" type="System">
+                            <param id="0" name="Variable">TouchHouse</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="714369138424026" title="Music">
+            <sub-events>
+                <event-block sid="716661437277652">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="906160004750166" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="156577197759267" type="Audio">
+                            <param id="0" name="Audio file">bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;bgm&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="204930502021674" title="GameOver">
+            <sub-events>
+                <event-block sid="347886131135661">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="579197093698975" type="System">
+                            <param id="0" name="Interval (seconds)">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set font color" sid="929867528336935" type="GameText">
+                            <param id="0" name="Color">rgb(random(255), random(255), random(255))</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="136204026853895">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="438875098744913" type="Player">
+                            <param id="0" name="Animation">&quot;death&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="382942150142878" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">floor(Player.X) + (TouchDeadDog * 25000 ) + (TouchFogottenBud  * 25000) + (TouchHouse * 25000)</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="748222113270901" type="GameText">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="276390211359668" type="ScoreText">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="224597223958891" type="GameText">
+                            <param id="0" name="X">Player.X - 125</param>
+                            <param id="1" name="Y">Player.Y -150</param>
+                        </action>
+                        <action id="0" name="Set text" sid="601073591893611" type="ScoreText">
+                            <param id="0" name="Text">Score</param>
+                        </action>
+                        <action id="2" name="Set visible" sid="847630706190528" type="GameOverButton">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="387300879204699" type="ScorePopUpText">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="813586986138729">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="514797911045494" type="GameOverButton" />
+                        <condition id="-8" name="Compare two values" sid="885446681462869" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="729956958136129" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="745155585552937" type="System">
+                            <param id="0" name="Layout">Menu</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="135562005345489" type="System">
+                            <param id="0" name="Variable">Hp</param>
+                            <param id="1" name="Value">800</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="870756966625826" type="System">
+                            <param id="0" name="Variable">RainSpeed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="602354290831751" type="System">
+                            <param id="0" name="Variable">TouchDeadDog</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="852104583637589" type="System">
+                            <param id="0" name="Variable">TouchFogottenBud</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="966416599148156" type="System">
+                            <param id="0" name="Variable">TouchHouse</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="402727474425990">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="380372241615082" type="System">
+                    <param id="0" name="Interval (seconds)">0.1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set font color" sid="661726158189721" type="ScorePopUp">
+                    <param id="0" name="Color">rgb (0,random(255), 0)</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
