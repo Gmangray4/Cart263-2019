@@ -129,8 +129,11 @@ let $textScoreP2;
 let player1Turn = false;
 let player2Turn = false;
 
-let possbleKeyListP1 = "qwertasdfzxc";
-let possbleKeyListP2 = "yuiophjklbnm";
+let possbleKeyList = "1234567890qwertyuiopasdfghjklzxcvbnm";
+
+let windowRegion = 1;
+let hackerCoordinateX = 1;
+let hackerCoordinateY = 1;
 
 let scoreP1 = 0;
 let scoreP2 = 0;
@@ -140,13 +143,22 @@ let possbleKeyListHeldKey = "tgbv";
 let possbleEventKeyList1 = "";
 let possbleEventKeyList2 = "";
 
-let keyListPlayer1 = "";
-let keyListPlayer2 = "";
+let currentkey = " ";
 
 let currentHeldKey = " ";
 let heldKey = "";
 
 let images = "";
+
+let time = "";
+
+let gameRuning = false;
+
+let countdownStart = 180000;
+
+let sentence = "";
+
+let turnInterval;
 
 $(document).ready(setup);
 
@@ -173,25 +185,177 @@ function setup() {
   $(document).on("keydown", keyDown);
   console.log(currentHeldKey);
 
-let i = Math.floor((Math.random() * 2) + 1);
-if (i === 1){
-  player1Turn = true;
-
-}
-if (i === 2){
-  player2Turn = true;
-}
-console.log(i);
-console.log(player1Turn);
-console.log(player2Turn);
-block();
+  let i = Math.floor((Math.random() * 2) + 1);
+  if (i === 1) {
+    player1Turn = true;
+  }
+  if (i === 2) {
+    player2Turn = true;
+  }
+  turnDisplay();
+  console.log(i);
+  console.log(player1Turn);
+  console.log(player2Turn);
+  changeKey();
+  block();
   createImageP1();
   createImageP2();
 
-  console.log(possbleKeyListP1);
 }
 
-function draw() {}
+function draw() {
+}
+
+function createImage(){
+  createImageW1();
+  createImageW2();
+  createImageW3();
+  createImageW4();
+}
+function createImageW1() {
+  if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === true){
+  let max_width = 400;
+  let max_height = 150;
+  let z = Math.floor((Math.random() * 100) + 1);
+  let i = Math.floor((Math.random() * 118) + 1);
+  let imgSize = Math.floor((Math.random() * 50) + 100);
+
+  let randomCoordinate = function() {
+    var r = [];
+    var x = Math.floor(Math.random() * max_width);
+    var y = Math.floor(Math.random() * max_height) + 60;
+    r = [x, y];
+    return r;
+  };
+  let xy = randomCoordinate();
+
+  let img = document.createElement("img");
+  img.src = "assets/images/memes/" + i + ".png";
+  img.className = "memeImg";
+  img.id = "imgP1" + i;
+  img.height = imgSize;
+  img.width = imgSize;
+  img.style.position = "absolute";
+  img.style.top = xy[1] + 'px';
+  img.style.left = xy[0] + 'px';
+  img.style.zIndex = z;
+  img.addEventListener("click", function() {
+  img.remove();
+    scoreP1--;
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  window1.appendChild(img);
+  // textScoreP1.innerText = "Score = " + scoreP1;
+}
+}
+function createImageW2() {
+  if (hackerCoordinateX === 2 && hackerCoordinateY === 1 && blockW2 === true) {
+  let max_width = 400;
+  let max_height = 150;
+  let z = Math.floor((Math.random() * 100) + 1);
+  let i = Math.floor((Math.random() * 118) + 1);
+  let imgSize = Math.floor((Math.random() * 50) + 100);
+
+  let randomCoordinate = function() {
+    var r = [];
+    var x = Math.floor(Math.random() * max_width) + 700;
+    var y = Math.floor(Math.random() * max_height) + 60;
+    r = [x, y];
+    return r;
+
+  };
+  let xy = randomCoordinate();
+
+  let img = document.createElement("img");
+  img.src = "assets/images/memes/" + i + ".png";
+  img.className = "memeImg";
+  img.id = "imgP1" + i;
+  img.height = imgSize;
+  img.width = imgSize;
+  img.style.position = "absolute";
+  img.style.top = xy[1] + 'px';
+  img.style.left = xy[0] + 'px';
+  img.style.zIndex = z;
+  img.addEventListener("click", function() {
+  img.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  window2.appendChild(img);
+  // textScoreP1.innerText = "Score = " + scoreP1;
+}
+}
+function createImageW3() {
+    if (hackerCoordinateX === 1 && hackerCoordinateY === 2 && blockW3 === true) {
+  let max_width = 400;
+  let max_height = 150;
+  let z = Math.floor((Math.random() * 100) + 1);
+  let i = Math.floor((Math.random() * 118) + 1);
+  let imgSize = Math.floor((Math.random() * 50) + 100);
+
+  let randomCoordinate = function() {
+    var r = [];
+    var x = Math.floor(Math.random() * max_width);
+    var y = Math.floor(Math.random() * max_height) + 400;
+    r = [x, y];
+    return r;
+  };
+
+  let xy = randomCoordinate();
+
+  let img = document.createElement("img");
+  img.src = "assets/images/memes/" + i + ".png";
+  img.className = "memeImg";
+  img.id = "imgP1" + i;
+  img.height = imgSize;
+  img.width = imgSize;
+  img.style.position = "absolute";
+  img.style.top = xy[1] + 'px';
+  img.style.left = xy[0] + 'px';
+  img.style.zIndex = z;
+  img.addEventListener("click", function() {
+  img.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  window3.appendChild(img);
+  // textScoreP1.innerText = "Score = " + scoreP1;
+}
+}
+function createImageW4() {
+    if (hackerCoordinateX === 2 && hackerCoordinateY === 2 && blockW4 === true) {
+  let max_width = 400;
+  let max_height = 150;
+  let z = Math.floor((Math.random() * 100) + 1);
+  let i = Math.floor((Math.random() * 118) + 1);
+  let imgSize = Math.floor((Math.random() * 50) + 100);
+
+  let randomCoordinate = function() {
+    var r = [];
+    var x = Math.floor(Math.random() * max_width) + 700;
+    var y = Math.floor(Math.random() * max_height) + 400;
+    r = [x, y];
+    return r;
+  };
+
+  let xy = randomCoordinate();
+
+  let img = document.createElement("img");
+  img.src = "assets/images/memes/" + i + ".png";
+  img.className = "memeImg";
+  img.id = "imgP1" + i;
+  img.height = imgSize;
+  img.width = imgSize;
+  img.style.position = "absolute";
+  img.style.top = xy[1] + 'px';
+  img.style.left = xy[0] + 'px';
+  img.style.zIndex = z;
+  img.addEventListener("click", function() {
+  img.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  window4.appendChild(img);
+  // textScoreP1.innerText = "Score = " + scoreP1;
+}
+}
 
 function createImageP1() {
   let max_width = 400;
@@ -219,15 +383,16 @@ function createImageP1() {
   img.style.top = xy[1] + 'px';
   img.style.left = xy[0] + 'px';
   img.style.zIndex = z;
-  scoreP1 ++;
-  img.addEventListener("click", function(){
-    img.remove();
-    scoreP1 --;
-    textScoreP1.innerText = "Score = " +  scoreP1;
+  scoreP1++;
+  img.addEventListener("click", function() {
+  img.remove();
+    scoreP1--;
+    // textScoreP1.innerText = "Score = " + scoreP1;
   })
-  windowP1.appendChild(img);
-  textScoreP1.innerText = "Score = " +  scoreP1;
+  window1.appendChild(img);
+  // textScoreP1.innerText = "Score = " + scoreP1;
 }
+
 function createImageP2() {
   let max_width = 400;
   let max_height = 400;
@@ -254,22 +419,190 @@ function createImageP2() {
   img.style.top = xy[1] + 'px';
   img.style.left = xy[0] + 'px';
   img.style.zIndex = z;
-  scoreP2 ++;
-  img.addEventListener("click", function(){
+  scoreP2++;
+  img.addEventListener("click", function() {
     img.remove();
-    scoreP2 --;
-      textScoreP2.innerText = "Score = " +  scoreP2;
+    scoreP2--;
   })
-    textScoreP2.innerText = "Score = " +  scoreP2;
-  windowP2.appendChild(img);
+
+  window2.appendChild(img);
 }
 
 function changeAll() {
   currentHeldKey = possbleKeyListHeldKey[Math.floor(Math.random() * possbleKeyListHeldKey.length)];
 }
 
+function changeKey() {
+  currentkey = possbleKeyList[Math.floor(Math.random() * possbleKeyList.length)];
+    console.log(currentkey);
+    turnDisplay();
+}
 
-function block(){
+function turnDisplay(){
+  if (player1Turn === true && player2Turn === false ) {
+  textScoreP1.innerText = "Press Key: " + currentkey;
+  textScoreP2.innerText = "click to remove!";
+}else if (player1Turn === false && player2Turn === true ) {
+  textScoreP2.innerText = "Press Key: " + currentkey;
+  textScoreP1.innerText = "click to remove!";
+}
+}
+
+let blockW1 = false;
+let blockW2 = false;
+let blockW3 = false;
+let blockW4 = false;
+
+function blockWindow1(){
+if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === false){
+  let max_width = 0;
+  let max_height = 5;
+  let placement = function() {
+    let r = [];
+    let x = max_width + 8;
+    let y = max_height + 60;
+    r = [x, y];
+    return r;
+  };
+
+  let xy = placement();
+  let div = document.createElement("div");
+  div.className = "block";
+  div.id = "windowBlock";
+  div.style.width = "50%";
+  div.style.height = "45vh";
+  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
+  div.style.color = "yellow";
+  div.style.position = "absolute";
+  div.style.top = xy[1] + 'px';
+  div.style.left = xy[0] + 'px';
+  blockW1 = true;
+  div.addEventListener("click", function() {
+    blockW1 = false;
+  div.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  div.style.zIndex = 9998;
+  document.getElementById("gameWindow").appendChild(div);
+}
+}
+
+function blockWindow2(){
+if (hackerCoordinateX === 2 && hackerCoordinateY === 1 && blockW2 === false){
+  let max_width = 0;
+  let max_height = 5;
+  let placement = function() {
+    let r = [];
+    let x = max_width + 680;
+    let y = max_height + 60;
+    r = [x, y];
+    return r;
+  };
+
+  let xy = placement();
+  let div = document.createElement("div");
+  div.className = "block";
+  div.id = "windowBlock";
+  div.style.width = "50%";
+  div.style.height = "45vh";
+  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
+  div.style.color = "yellow";
+  div.style.position = "absolute";
+  div.style.top = xy[1] + 'px';
+  div.style.left = xy[0] + 'px';
+  blockW2 = true;
+  div.addEventListener("click", function() {
+    blockW2 = false;
+  div.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  div.style.zIndex = 9998;
+  document.getElementById("gameWindow").appendChild(div);
+}
+}
+
+function blockWindow3(){
+if (hackerCoordinateX === 1 && hackerCoordinateY === 2 && blockW3 === false){
+  let max_width = 0;
+  let max_height = 5;
+  let placement = function() {
+    let r = [];
+    let x = max_width + 8;
+    let y = max_height + 350;
+    r = [x, y];
+    return r;
+  };
+
+  let xy = placement();
+  let div = document.createElement("div");
+  div.className = "block";
+  div.id = "windowBlock";
+  div.style.width = "50%";
+  div.style.height = "45vh";
+  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
+  div.style.color = "yellow";
+  div.style.position = "absolute";
+  div.style.top = xy[1] + 'px';
+  div.style.left = xy[0] + 'px';
+  blockW3 = true;
+  div.addEventListener("click", function() {
+    blockW3 = false;
+  div.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  div.style.zIndex = 9998;
+  document.getElementById("gameWindow").appendChild(div);
+}
+}
+function blockWindow4(){
+if (hackerCoordinateX === 2 && hackerCoordinateY === 2 && blockW4 === false){
+  let max_width = 0;
+  let max_height = 5;
+  let placement = function() {
+    let r = [];
+    let x = max_width + 680;
+    let y = max_height + 350;
+    r = [x, y];
+    return r;
+  };
+
+  let xy = placement();
+  let div = document.createElement("div");
+  div.className = "block";
+  div.id = "windowBlock";
+  div.style.width = "50%";
+  div.style.height = "45vh";
+  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
+  div.style.color = "yellow";
+  div.style.position = "absolute";
+  div.style.top = xy[1] + 'px';
+  div.style.left = xy[0] + 'px';
+  blockW4 = true;
+  div.addEventListener("click", function() {
+    blockW4 = false;
+  div.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  div.style.zIndex = 9998;
+  document.getElementById("gameWindow").appendChild(div);
+}
+}
+
+
+
+function block() {
 
   let max_width = 0;
   let max_height = 5;
@@ -282,7 +615,7 @@ function block(){
       x = max_width + 0;
     }
     if (player2Turn === true) {
-      x = max_width + 700;
+      x = max_width + 680;
     }
     r = [x, y];
     return r;
@@ -294,80 +627,185 @@ function block(){
   div.id = "windowBlock";
   div.style.width = "50%";
   div.style.height = "90vh";
-  div.style.background = "yellow";
+  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
   div.style.color = "yellow";
   div.style.position = "absolute";
   div.style.top = xy[1] + 'px';
   div.style.left = xy[0] + 'px';
-  div.style.zIndex = 9999;
+  div.addEventListener("click", function() {
+  div.remove();
+    // textScoreP1.innerText = "Score = " + scoreP1;
+  })
+  div.style.zIndex = 9998;
   document.getElementById("gameWindow").appendChild(div);
 }
 
+// https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
+function gameTimer(duration, display) {
+  let timer = duration,
+    minutes, seconds;
+  let gameInterval = setInterval(function() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
 
-// function shuffle() {
-//   let currentIndex =  possbleKeyListP1.length, temporaryValue, randomIndex;
-//
-//   // While there remain elements to shuffle...
-//   while (0 !== currentIndex) {
-//
-//     // Pick a remaining element...
-//     randomIndex = Math.floor(Math.random() * currentIndex);
-//     currentIndex -= 1;
-//
-//     // And swap it with the current element.
-//      temporaryValue = possbleKeyListP1[currentIndex];
-//      possbleKeyListP1[currentIndex] = possbleKeyListP1[randomIndex];
-//      possbleKeyListP1[randomIndex] = temporaryValue;
-//   }
-//   return  possbleKeyListP1;
-// }
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-// function hey(){
-//   keyListPlayer1 = undefined;
-//
-// // let yogi = possbleKeyListP1[Math.floor(Math.random() * possbleKeyListP1.length)];
-//   for (var i = 0; i <  possbleKeyListP1.length; i++) {
-//      keyListPlayer1 = keyListPlayer1 + possbleKeyListP1[i];
-//   }
-//
-// }
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+      clearInterval(turnInterval);
+      clearInterval(gameInterval);
+    }
+
+  }, 1000);
+  console.log(minutes);
+}
+
+function turnTimer(duration) {
+  let timer = duration,
+    minutes, seconds;
+turnInterval = setInterval(function() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    if (--timer < 0) {
+      sentence = "change turn";
+      speak();
+      timer = duration;
+      changeTurns();
+    }
+
+  }, 1000);
+  console.log(minutes);
+}
+
+function countdown() {
+  sentence = "start";
+  speak();
+  let time = 60 * 3,
+    display = document.querySelector('#time');
+  gameTimer(time, display);
+  let turnTime = 30 * 1;
+  turnTimer(turnTime);
+
+};
+
+function changeTurns() {
+
+  if (player1Turn === true) {
+    player1Turn = false;
+    player2Turn = true;
+    document.getElementById("windowBlock").remove();
+    setTimeout(block, 100);
+  } else if (player2Turn === true) {
+    player2Turn = false;
+    player1Turn = true;
+    document.getElementById("windowBlock").remove();
+    setTimeout(block, 100);
+  }
+    turnDisplay();
+}
+
+function checkCoordinates(){
+  if (hackerCoordinateX === 1 && hackerCoordinateY === 1) {
+  document.getElementById("hackerS").style.margin = "0";
+  }
+  if (hackerCoordinateX === 2 && hackerCoordinateY === 1) {
+  document.getElementById("hackerS").style.margin = "0px 0px 0px 50%";
+  }
+  if (hackerCoordinateX === 1 && hackerCoordinateY === 2) {
+  document.getElementById("hackerS").style.margin = "45vh 0px 0px";
+  }
+  if (hackerCoordinateX === 2 && hackerCoordinateY === 2) {
+  document.getElementById("hackerS").style.margin = "45vh 0px 0px 50%";
+  }
+}
 
 
+function speak() {
+  // Set some random numbers for the voice's pitch and rate parameters for a bit of fun
+  let options = {
+    pitch: Math.random(),
+    rate: Math.random()
+  };
+  // Use ResponsiveVoice to speak the string we generated, with UK English Male voice
+  // and the options we just specified.
+  responsiveVoice.speak(sentence,'UK English Male',options);
+}
 
 function keyDown(e) {
   // console.log("keyDown");
   // console.log(heldKey);
-  heldKey = e.key;
-
-  // if (heldKey === currentHeldKey)
-  if (e.key === "t") {
-    createImageP2();
-    console.log("t");
-  }
-
-  if (e.key === "r") {
+  if (player1Turn === true && e.key === currentkey) {
     createImageP1();
-    console.log("r");
+    changeKey();
+  } else {
   }
 
+  if (player2Turn === true && e.key === currentkey) {
+    createImageP2();
+    changeKey();
+  } else {
+  }
 
-  if (e.key === "p") {
-    if (player1Turn === true) {
-      player1Turn = false;
-      player2Turn = true;
-      document.getElementById("windowBlock").remove();
-      setTimeout(block, 100);
+  if (e.key === "q") {
+    console.log("q");
+    countdown();
+  }
+  if (e.key === "m") {
+    console.log("m");
+    sentence = "meme";
+    speak();
+createImage();
+  }
+  if (e.key === "i") {
+    console.log("i");
+blockWindow1();
+blockWindow2();
+blockWindow3();
+blockWindow4();
+  }
+  // up arrow	38
+  if (e.keyCode === 38) {
+    console.log("38");
+    if (hackerCoordinateY === 2) {
+      hackerCoordinateY = 1;
     }
-    else if (player2Turn === true) {
-      player2Turn = false;
-      player1Turn = true;
-      document.getElementById("windowBlock").remove();
-  setTimeout(block, 100);
+    checkCoordinates();
+  }
+  // left arrow	37
+  if (e.keyCode === 37) {
+    console.log("37");
+    if (hackerCoordinateX === 2) {
+      hackerCoordinateX = 1;
     }
-    console.log("p");
+    checkCoordinates();
+  }
+  // right arrow	39
+  if (e.keyCode === 39) {
+    console.log("39");
+    if (hackerCoordinateX === 1) {
+      hackerCoordinateX = 2;
+    }
+    checkCoordinates();
+  }
+
+// down arrow	40
+  if (e.keyCode === 40) {
+    console.log("40");
+    if (hackerCoordinateY === 1) {
+      hackerCoordinateY = 2;
+    }
+    checkCoordinates();
   }
 }
-
 function keyUp(e) {
   // console.log("KeyUp");
   if (heldKey === currentHeldKey) {

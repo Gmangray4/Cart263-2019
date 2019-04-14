@@ -38,8 +38,39 @@ div.main {
   height: 100%;
 }
 
+/* div.start{
+  background-color: red;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-color: black;
+  z-index: 9999;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  float: left;
+  position: absolute;
+}
+
+div.rules{
+  background-color: blue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-color: black;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 50%;
+  height: 80%;
+  float: left;
+  position: absolute;
+} */
+
 div.title{
-	background-color: green;
+	background-color: #333333;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -59,7 +90,7 @@ h1{
 }
 
 div.score{
-	background-color: white;
+	background-color: #FFCC00;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -75,15 +106,18 @@ div.score{
 }
 
 p.score{
+  font-size: 18px;
+  text-transform: capitalize;
 	height: auto;
-	width: 5em;
-		margin: 1em 45%;
+	width: 8em;
+	margin: 1em 30%;
 }
 
-div.button{
-	background-color: gold;
+div.Timer{
+  background-color: #003399;
+	background-image:url("../assets/images/div/eu.png");
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: auto 4.3em;
 	background-position: center;
 	border: none;
 	border-color: black;
@@ -95,6 +129,14 @@ div.button{
 	height: 95%;
 	float: left;
 }
+
+p.Timer{
+color: yellow;
+height: auto;
+width: 5em;
+margin: 1em 43%;
+}
+
 
 div.gameWindow {
   background-color: white;
@@ -111,35 +153,39 @@ div.gameWindow {
   height: 90vh;
 }
 
-div.Player1Window {
-  background-color: blue;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border: none;
-  border-color: black;
-  margin: 0;
-  z-index: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
+
+div.hackerSelect{
+  background: none;
+  border-style: solid;
+  border-color: yellow;
+  overflow: hidden;
+  z-index: 1;
   width: 50%;
-  height: 90vh;
+  height: 45%;
+  position: absolute;
 }
 
-div.Player2Window {
-  background-color: red;
+div.deskTopWindow {
+  background-image:url("../assets/images/div/desktop.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: left;
+  position: static;
+  display: flow-root;
   border: none;
   border-color: black;
   margin: 0;
   z-index: 0;
+  padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
   width: 50%;
-  height: 90vh;
-  float: right;
+  height: 45vh;
+  float: left;
+}
+
+div.block{
+  background-image:url(../assets/images/div/incognito.png);
 }
 
 /* div.bottomBox {

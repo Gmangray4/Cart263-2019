@@ -14,6 +14,8 @@
   <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
   <!-- My script(s) -->
   <script src="js/script.js"></script>
 </head>
@@ -21,39 +23,43 @@
 <body>
   <!-- HTML would go here if needed. -->
   <header>
+    <!-- <div class="start">
+      <div class="rules">
+        <p></p>
+      </div>
+      <button onclick="changeAll()">Start</button>
+      <p> </p>
+    </div> -->
     <div class="title">
       <h1>Title</h1>
     </div>
     <div class="score">
       <p id="textScoreP1" class="score">scoreP1</p>
     </div>
-    <div class="button">
-    <p>start</p>
+    <div class="Timer">
+    <p class="Timer" id="time">Time</p>
     </div>
     <div class="score">
-      <p id="textScoreP2"class="score">scoreP2</p>
+      <p id="textScoreP2"class="score"></p>
     </div>
     <div class="title">
       <h1>Title</h1>
     </div>
   </header>
+  <div id="hackerS" class="hackerSelect">
+
+  </div>
   <div class="main">
     <div id="gameWindow" class="gameWindow">
       <!-- <img class="dude" src="assets//images/VT_Boy.png" alt="Vt_Boy"> -->
-      <div id="windowP2" class="Player2Window">
+      <div id="window1" class="deskTopWindow">
       </div>
-      <div id="windowP1" class="Player1Window">
+      <div id="window2" class="deskTopWindow">
       </div>
-
-    </div>
-    <!-- <div class="bottomBox">
-</div> -->
-<p style="color: white;">R places a random image on the right end <br><br>
-T random image on the left side. <br><br>
-P changes the spot of the yellow div.
-</p>
-  </div>
-
+      <div id="window3" class="deskTopWindow">
+      </div>
+      <div id="window4" class="deskTopWindow">
+      </div>
 </body>
 
 </html>
