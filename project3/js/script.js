@@ -117,48 +117,33 @@ author, and this description to match your project!
 // close braket	221
 // single quote	222
 
-let $windowP1;
-let $windowP2;
 
-let $imgP1;
-let $imgP2;
 let $gameWindow;
-let $textScoreP1;
-let $textScoreP2;
+
 
 let player1Turn = false;
 let player2Turn = false;
 
-let possbleKeyList = "1234567890qwertyuiopasdfghjklzxcvbnm";
-
-let windowRegion = 1;
 let hackerCoordinateX = 1;
 let hackerCoordinateY = 1;
 
 let scoreP1 = 0;
 let scoreP2 = 0;
 
-let possbleKeyListHeldKey = "tgbv";
-
-let possbleEventKeyList1 = "";
-let possbleEventKeyList2 = "";
-
-let currentkey = " ";
-
-let currentHeldKey = " ";
-let heldKey = "";
-
-let images = "";
-
-let time = "";
-
 let gameRuning = false;
-
-let countdownStart = 180000;
 
 let sentence = "";
 
 let turnInterval;
+
+let arrayIds = [];
+
+let blockW1 = false;
+let blockW2 = false;
+let blockW3 = false;
+let blockW4 = false;
+
+let incognitoIsUsed = false;
 
 $(document).ready(setup);
 
@@ -173,474 +158,378 @@ $(document).ready(function() {
 
 function setup() {
   $gameWindow = $('#gameWindow');
-  $windowP2 = $('#windowP2');
-  $windowP1 = $('#windowP1');
-  $imgP1 = $('#imgP1');
-  $imgP2 = $('#imgP2');
-  $textScoreP1 = $('#textScoreP1')
-  $textScoreP2 = $('#textScoreP2')
-
-  changeAll();
-  $(document).on("keyup", keyUp);
   $(document).on("keydown", keyDown);
-  console.log(currentHeldKey);
-
-  let i = Math.floor((Math.random() * 2) + 1);
-  if (i === 1) {
-    player1Turn = true;
-  }
-  if (i === 2) {
-    player2Turn = true;
-  }
-  turnDisplay();
-  console.log(i);
-  console.log(player1Turn);
-  console.log(player2Turn);
-  changeKey();
-  block();
-  createImageP1();
-  createImageP2();
-
 }
 
-function draw() {
+function draw() {}
+
+function round1Start(){
+countdown();
+}
+function round1End(){
+scoreP1 = arrayIds.length;
+}
+function round2Start(){
+countdown();
+}
+function round2End(){
+scoreP2 = arrayIds.length;
 }
 
-function createImage(){
+function createImage() {
   createImageW1();
   createImageW2();
   createImageW3();
   createImageW4();
 }
+
 function createImageW1() {
-  if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === true){
-  let max_width = 400;
-  let max_height = 150;
-  let z = Math.floor((Math.random() * 100) + 1);
-  let i = Math.floor((Math.random() * 118) + 1);
-  let imgSize = Math.floor((Math.random() * 50) + 100);
+  if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === true) {
+    let max_width = 400;
+    let max_height = 150;
+    let z = Math.floor((Math.random() * 100) + 1);
+    let i = Math.floor((Math.random() * 118) + 1);
+    let imgSize = Math.floor((Math.random() * 50) + 100);
 
-  let randomCoordinate = function() {
-    var r = [];
-    var x = Math.floor(Math.random() * max_width);
-    var y = Math.floor(Math.random() * max_height) + 60;
-    r = [x, y];
-    return r;
-  };
-  let xy = randomCoordinate();
+    let randomCoordinate = function() {
+      var r = [];
+      var x = Math.floor(Math.random() * max_width);
+      var y = Math.floor(Math.random() * max_height) + 60;
+      r = [x, y];
+      return r;
+    };
+    let xy = randomCoordinate();
 
-  let img = document.createElement("img");
-  img.src = "assets/images/memes/" + i + ".png";
-  img.className = "memeImg";
-  img.id = "imgP1" + i;
-  img.height = imgSize;
-  img.width = imgSize;
-  img.style.position = "absolute";
-  img.style.top = xy[1] + 'px';
-  img.style.left = xy[0] + 'px';
-  img.style.zIndex = z;
-  img.addEventListener("click", function() {
-  img.remove();
-    scoreP1--;
+    let img = document.createElement("img");
+    img.src = "assets/images/memes/" + i + ".png";
+    img.className = "memeImg";
+    let id = "img" + i;
+    img.id = id;
+    arrayIds.push(id);
+    img.height = imgSize;
+    img.width = imgSize;
+    img.style.position = "absolute";
+    img.style.top = xy[1] + 'px';
+    img.style.left = xy[0] + 'px';
+    img.style.zIndex = z;
+    img.addEventListener("click", function() {
+      let index = arrayIds.indexOf(img.id);
+      if (index !== -1) arrayIds.splice(index, 1);
+      img.remove();
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    window1.appendChild(img);
     // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  window1.appendChild(img);
-  // textScoreP1.innerText = "Score = " + scoreP1;
+  }
 }
-}
+
 function createImageW2() {
   if (hackerCoordinateX === 2 && hackerCoordinateY === 1 && blockW2 === true) {
-  let max_width = 400;
-  let max_height = 150;
-  let z = Math.floor((Math.random() * 100) + 1);
-  let i = Math.floor((Math.random() * 118) + 1);
-  let imgSize = Math.floor((Math.random() * 50) + 100);
+    let max_width = 400;
+    let max_height = 150;
+    let z = Math.floor((Math.random() * 100) + 1);
+    let i = Math.floor((Math.random() * 118) + 1);
+    let imgSize = Math.floor((Math.random() * 50) + 100);
 
-  let randomCoordinate = function() {
-    var r = [];
-    var x = Math.floor(Math.random() * max_width) + 700;
-    var y = Math.floor(Math.random() * max_height) + 60;
-    r = [x, y];
-    return r;
+    let randomCoordinate = function() {
+      var r = [];
+      var x = Math.floor(Math.random() * max_width) + 700;
+      var y = Math.floor(Math.random() * max_height) + 60;
+      r = [x, y];
+      return r;
 
-  };
-  let xy = randomCoordinate();
+    };
+    let xy = randomCoordinate();
 
-  let img = document.createElement("img");
-  img.src = "assets/images/memes/" + i + ".png";
-  img.className = "memeImg";
-  img.id = "imgP1" + i;
-  img.height = imgSize;
-  img.width = imgSize;
-  img.style.position = "absolute";
-  img.style.top = xy[1] + 'px';
-  img.style.left = xy[0] + 'px';
-  img.style.zIndex = z;
-  img.addEventListener("click", function() {
-  img.remove();
+    let img = document.createElement("img");
+    img.src = "assets/images/memes/" + i + ".png";
+    img.className = "memeImg";
+    let id = "img" + i;
+    img.id = id;
+    arrayIds.push(id);
+    img.height = imgSize;
+    img.width = imgSize;
+    img.style.position = "absolute";
+    img.style.top = xy[1] + 'px';
+    img.style.left = xy[0] + 'px';
+    img.style.zIndex = z;
+    img.addEventListener("click", function() {
+      let index = arrayIds.indexOf(img.id);
+      if (index !== -1) arrayIds.splice(index, 1);
+      img.remove();
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    window2.appendChild(img);
     // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  window2.appendChild(img);
-  // textScoreP1.innerText = "Score = " + scoreP1;
+  }
 }
-}
+
 function createImageW3() {
-    if (hackerCoordinateX === 1 && hackerCoordinateY === 2 && blockW3 === true) {
-  let max_width = 400;
-  let max_height = 150;
-  let z = Math.floor((Math.random() * 100) + 1);
-  let i = Math.floor((Math.random() * 118) + 1);
-  let imgSize = Math.floor((Math.random() * 50) + 100);
+  if (hackerCoordinateX === 1 && hackerCoordinateY === 2 && blockW3 === true) {
+    let max_width = 400;
+    let max_height = 150;
+    let z = Math.floor((Math.random() * 100) + 1);
+    let i = Math.floor((Math.random() * 118) + 1);
+    let imgSize = Math.floor((Math.random() * 50) + 100);
 
-  let randomCoordinate = function() {
-    var r = [];
-    var x = Math.floor(Math.random() * max_width);
-    var y = Math.floor(Math.random() * max_height) + 400;
-    r = [x, y];
-    return r;
-  };
+    let randomCoordinate = function() {
+      var r = [];
+      var x = Math.floor(Math.random() * max_width);
+      var y = Math.floor(Math.random() * max_height) + 400;
+      r = [x, y];
+      return r;
+    };
 
-  let xy = randomCoordinate();
+    let xy = randomCoordinate();
 
-  let img = document.createElement("img");
-  img.src = "assets/images/memes/" + i + ".png";
-  img.className = "memeImg";
-  img.id = "imgP1" + i;
-  img.height = imgSize;
-  img.width = imgSize;
-  img.style.position = "absolute";
-  img.style.top = xy[1] + 'px';
-  img.style.left = xy[0] + 'px';
-  img.style.zIndex = z;
-  img.addEventListener("click", function() {
-  img.remove();
+    let img = document.createElement("img");
+    img.src = "assets/images/memes/" + i + ".png";
+    img.className = "memeImg";
+    let id = "img" + i;
+    img.id = id;
+    arrayIds.push(id);
+    img.height = imgSize;
+    img.width = imgSize;
+    img.style.position = "absolute";
+    img.style.top = xy[1] + 'px';
+    img.style.left = xy[0] + 'px';
+    img.style.zIndex = z;
+    img.addEventListener("click", function() {
+      let index = arrayIds.indexOf(img.id);
+      if (index !== -1) arrayIds.splice(index, 1);
+      img.remove();
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    window3.appendChild(img);
     // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  window3.appendChild(img);
-  // textScoreP1.innerText = "Score = " + scoreP1;
-}
+  }
 }
 function createImageW4() {
-    if (hackerCoordinateX === 2 && hackerCoordinateY === 2 && blockW4 === true) {
-  let max_width = 400;
-  let max_height = 150;
-  let z = Math.floor((Math.random() * 100) + 1);
-  let i = Math.floor((Math.random() * 118) + 1);
-  let imgSize = Math.floor((Math.random() * 50) + 100);
+  if (hackerCoordinateX === 2 && hackerCoordinateY === 2 && blockW4 === true) {
+    let max_width = 400;
+    let max_height = 150;
+    let z = Math.floor((Math.random() * 100) + 1);
+    let i = Math.floor((Math.random() * 118) + 1);
+    let imgSize = Math.floor((Math.random() * 50) + 100);
 
-  let randomCoordinate = function() {
-    var r = [];
-    var x = Math.floor(Math.random() * max_width) + 700;
-    var y = Math.floor(Math.random() * max_height) + 400;
-    r = [x, y];
-    return r;
-  };
+    let randomCoordinate = function() {
+      var r = [];
+      var x = Math.floor(Math.random() * max_width) + 700;
+      var y = Math.floor(Math.random() * max_height) + 400;
+      r = [x, y];
+      return r;
+    };
 
-  let xy = randomCoordinate();
+    let xy = randomCoordinate();
 
-  let img = document.createElement("img");
-  img.src = "assets/images/memes/" + i + ".png";
-  img.className = "memeImg";
-  img.id = "imgP1" + i;
-  img.height = imgSize;
-  img.width = imgSize;
-  img.style.position = "absolute";
-  img.style.top = xy[1] + 'px';
-  img.style.left = xy[0] + 'px';
-  img.style.zIndex = z;
-  img.addEventListener("click", function() {
-  img.remove();
+    let img = document.createElement("img");
+    img.src = "assets/images/memes/" + i + ".png";
+    img.className = "memeImg";
+    let id = "img" + i;
+    img.id = id;
+    arrayIds.push(id);
+    img.height = imgSize;
+    img.width = imgSize;
+    img.style.position = "absolute";
+    img.style.top = xy[1] + 'px';
+    img.style.left = xy[0] + 'px';
+    img.style.zIndex = z;
+    img.addEventListener("click", function() {
+      let index = arrayIds.indexOf(img.id);
+      if (index !== -1) arrayIds.splice(index, 1);
+      img.remove();
+
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    window4.appendChild(img);
     // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  window4.appendChild(img);
-  // textScoreP1.innerText = "Score = " + scoreP1;
-}
-}
-
-function createImageP1() {
-  let max_width = 400;
-  let max_height = 400;
-  let z = Math.floor((Math.random() * 100) + 1);
-  let i = Math.floor((Math.random() * 118) + 1);
-  let imgSize = Math.floor((Math.random() * 150) + 100);
-
-  let randomCoordinate = function() {
-    var r = [];
-    var x = Math.floor(Math.random() * max_width);
-    var y = Math.floor(Math.random() * max_height) + 60;
-    r = [x, y];
-    return r;
-  };
-  let xy = randomCoordinate();
-
-  let img = document.createElement("img");
-  img.src = "assets/images/memes/" + i + ".png";
-  img.className = "memeImg";
-  img.id = "imgP1" + i;
-  img.height = imgSize;
-  img.width = imgSize;
-  img.style.position = "absolute";
-  img.style.top = xy[1] + 'px';
-  img.style.left = xy[0] + 'px';
-  img.style.zIndex = z;
-  scoreP1++;
-  img.addEventListener("click", function() {
-  img.remove();
-    scoreP1--;
-    // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  window1.appendChild(img);
-  // textScoreP1.innerText = "Score = " + scoreP1;
-}
-
-function createImageP2() {
-  let max_width = 400;
-  let max_height = 400;
-  let z = Math.floor((Math.random() * 100) + 1);
-  let i = Math.floor((Math.random() * 118) + 1);
-  let imgSize = Math.floor((Math.random() * 150) + 100);
-
-  let randomCoordinate = function() {
-    var r = [];
-    var x = Math.floor(Math.random() * max_width + 700);
-    var y = Math.floor(Math.random() * max_height) + 60;
-    r = [x, y];
-    return r;
-  };
-
-  let xy = randomCoordinate();
-  let img = document.createElement("img");
-  img.src = "assets/images/memes/" + i + ".png";
-  img.className = "memeImg";
-  img.id = "imgP2" + i;
-  img.height = imgSize;
-  img.width = imgSize;
-  img.style.position = "absolute";
-  img.style.top = xy[1] + 'px';
-  img.style.left = xy[0] + 'px';
-  img.style.zIndex = z;
-  scoreP2++;
-  img.addEventListener("click", function() {
-    img.remove();
-    scoreP2--;
-  })
-
-  window2.appendChild(img);
-}
-
-function changeAll() {
-  currentHeldKey = possbleKeyListHeldKey[Math.floor(Math.random() * possbleKeyListHeldKey.length)];
+  }
 }
 
 function changeKey() {
   currentkey = possbleKeyList[Math.floor(Math.random() * possbleKeyList.length)];
-    console.log(currentkey);
-    turnDisplay();
+  console.log(currentkey);
+  turnDisplay();
 }
 
-function turnDisplay(){
-  if (player1Turn === true && player2Turn === false ) {
-  textScoreP1.innerText = "Press Key: " + currentkey;
-  textScoreP2.innerText = "click to remove!";
-}else if (player1Turn === false && player2Turn === true ) {
-  textScoreP2.innerText = "Press Key: " + currentkey;
-  textScoreP1.innerText = "click to remove!";
-}
-}
-
-let blockW1 = false;
-let blockW2 = false;
-let blockW3 = false;
-let blockW4 = false;
-
-function blockWindow1(){
-if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === false){
-  let max_width = 0;
-  let max_height = 5;
-  let placement = function() {
-    let r = [];
-    let x = max_width + 8;
-    let y = max_height + 60;
-    r = [x, y];
-    return r;
-  };
-
-  let xy = placement();
-  let div = document.createElement("div");
-  div.className = "block";
-  div.id = "windowBlock";
-  div.style.width = "50%";
-  div.style.height = "45vh";
-  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
-  div.style.backgroundRepeat = "no-repeat";
-  div.style.backgroundSize = "cover";
-  div.style.backgroundPosition = "center";
-  div.style.color = "yellow";
-  div.style.position = "absolute";
-  div.style.top = xy[1] + 'px';
-  div.style.left = xy[0] + 'px';
-  blockW1 = true;
-  div.addEventListener("click", function() {
-    blockW1 = false;
-  div.remove();
-    // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  div.style.zIndex = 9998;
-  document.getElementById("gameWindow").appendChild(div);
-}
-}
-
-function blockWindow2(){
-if (hackerCoordinateX === 2 && hackerCoordinateY === 1 && blockW2 === false){
-  let max_width = 0;
-  let max_height = 5;
-  let placement = function() {
-    let r = [];
-    let x = max_width + 680;
-    let y = max_height + 60;
-    r = [x, y];
-    return r;
-  };
-
-  let xy = placement();
-  let div = document.createElement("div");
-  div.className = "block";
-  div.id = "windowBlock";
-  div.style.width = "50%";
-  div.style.height = "45vh";
-  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
-  div.style.backgroundRepeat = "no-repeat";
-  div.style.backgroundSize = "cover";
-  div.style.backgroundPosition = "center";
-  div.style.color = "yellow";
-  div.style.position = "absolute";
-  div.style.top = xy[1] + 'px';
-  div.style.left = xy[0] + 'px';
-  blockW2 = true;
-  div.addEventListener("click", function() {
-    blockW2 = false;
-  div.remove();
-    // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  div.style.zIndex = 9998;
-  document.getElementById("gameWindow").appendChild(div);
-}
-}
-
-function blockWindow3(){
-if (hackerCoordinateX === 1 && hackerCoordinateY === 2 && blockW3 === false){
-  let max_width = 0;
-  let max_height = 5;
-  let placement = function() {
-    let r = [];
-    let x = max_width + 8;
-    let y = max_height + 350;
-    r = [x, y];
-    return r;
-  };
-
-  let xy = placement();
-  let div = document.createElement("div");
-  div.className = "block";
-  div.id = "windowBlock";
-  div.style.width = "50%";
-  div.style.height = "45vh";
-  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
-  div.style.backgroundRepeat = "no-repeat";
-  div.style.backgroundSize = "cover";
-  div.style.backgroundPosition = "center";
-  div.style.color = "yellow";
-  div.style.position = "absolute";
-  div.style.top = xy[1] + 'px';
-  div.style.left = xy[0] + 'px';
-  blockW3 = true;
-  div.addEventListener("click", function() {
-    blockW3 = false;
-  div.remove();
-    // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  div.style.zIndex = 9998;
-  document.getElementById("gameWindow").appendChild(div);
-}
-}
-function blockWindow4(){
-if (hackerCoordinateX === 2 && hackerCoordinateY === 2 && blockW4 === false){
-  let max_width = 0;
-  let max_height = 5;
-  let placement = function() {
-    let r = [];
-    let x = max_width + 680;
-    let y = max_height + 350;
-    r = [x, y];
-    return r;
-  };
-
-  let xy = placement();
-  let div = document.createElement("div");
-  div.className = "block";
-  div.id = "windowBlock";
-  div.style.width = "50%";
-  div.style.height = "45vh";
-  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
-  div.style.backgroundRepeat = "no-repeat";
-  div.style.backgroundSize = "cover";
-  div.style.backgroundPosition = "center";
-  div.style.color = "yellow";
-  div.style.position = "absolute";
-  div.style.top = xy[1] + 'px';
-  div.style.left = xy[0] + 'px';
-  blockW4 = true;
-  div.addEventListener("click", function() {
-    blockW4 = false;
-  div.remove();
-    // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  div.style.zIndex = 9998;
-  document.getElementById("gameWindow").appendChild(div);
-}
+function turnDisplay() {
+  if (player1Turn === true && player2Turn === false) {
+    textScoreP1.innerText = "Press Key: " + currentkey;
+    textScoreP2.innerText = "click to remove!";
+  } else if (player1Turn === false && player2Turn === true) {
+    textScoreP2.innerText = "Press Key: " + currentkey;
+    textScoreP1.innerText = "click to remove!";
+  }
 }
 
 
 
-function block() {
+function blockWindow1() {
+  if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === false && incognitoIsUsed === false) {
+    let max_width = 0;
+    let max_height = 5;
+    let placement = function() {
+      let r = [];
+      let x = max_width + 8;
+      let y = max_height + 60;
+      r = [x, y];
+      return r;
+    };
 
-  let max_width = 0;
-  let max_height = 5;
-  let placement = function() {
-    let r = [];
-    let x = 0;
-    let y = max_height + 60;
+    let xy = placement();
+    let div = document.createElement("div");
+    div.className = "block";
+    div.id = "windowBlock";
+    div.style.width = "50%";
+    div.style.height = "45vh";
+    div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+    div.style.backgroundRepeat = "no-repeat";
+    div.style.backgroundSize = "cover";
+    div.style.backgroundPosition = "center";
+    div.style.color = "yellow";
+    div.style.position = "absolute";
+    div.style.top = xy[1] + 'px';
+    div.style.left = xy[0] + 'px';
+    blockW1 = true;
+    div.addEventListener("click", function() {
+      blockW1 = false;
+      div.remove();
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    div.style.zIndex = 9998;
+    document.getElementById("gameWindow").appendChild(div);
+    let incognitoTime = 1 * 1;
+    incognitoTimer(incognitoTime);
+  }
+}
 
-    if (player1Turn === true) {
-      x = max_width + 0;
+function blockWindow2() {
+  if (hackerCoordinateX === 2 && hackerCoordinateY === 1 && blockW2 === false && incognitoIsUsed === false) {
+    let max_width = 0;
+    let max_height = 5;
+    let placement = function() {
+      let r = [];
+      let x = max_width + 680;
+      let y = max_height + 60;
+      r = [x, y];
+      return r;
+    };
+
+    let xy = placement();
+    let div = document.createElement("div");
+    div.className = "block";
+    div.id = "windowBlock";
+    div.style.width = "50%";
+    div.style.height = "45vh";
+    div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+    div.style.backgroundRepeat = "no-repeat";
+    div.style.backgroundSize = "cover";
+    div.style.backgroundPosition = "center";
+    div.style.color = "yellow";
+    div.style.position = "absolute";
+    div.style.top = xy[1] + 'px';
+    div.style.left = xy[0] + 'px';
+    blockW2 = true;
+    div.addEventListener("click", function() {
+      blockW2 = false;
+      div.remove();
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    div.style.zIndex = 9998;
+    document.getElementById("gameWindow").appendChild(div);
+    let incognitoTime = 1 * 1;
+    incognitoTimer(incognitoTime);
+  }
+}
+
+function blockWindow3() {
+  if (hackerCoordinateX === 1 && hackerCoordinateY === 2 && blockW3 === false && incognitoIsUsed === false) {
+    let max_width = 0;
+    let max_height = 5;
+    let placement = function() {
+      let r = [];
+      let x = max_width + 8;
+      let y = max_height + 350;
+      r = [x, y];
+      return r;
+    };
+
+    let xy = placement();
+    let div = document.createElement("div");
+    div.className = "block";
+    div.id = "windowBlock";
+    div.style.width = "50%";
+    div.style.height = "45vh";
+    div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+    div.style.backgroundRepeat = "no-repeat";
+    div.style.backgroundSize = "cover";
+    div.style.backgroundPosition = "center";
+    div.style.color = "yellow";
+    div.style.position = "absolute";
+    div.style.top = xy[1] + 'px';
+    div.style.left = xy[0] + 'px';
+    blockW3 = true;
+    div.addEventListener("click", function() {
+      blockW3 = false;
+      div.remove();
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    div.style.zIndex = 9998;
+    document.getElementById("gameWindow").appendChild(div);
+    let incognitoTime = 1 * 1;
+    incognitoTimer(incognitoTime);
+  }
+}
+
+function blockWindow4() {
+  if (hackerCoordinateX === 2 && hackerCoordinateY === 2 && blockW4 === false && incognitoIsUsed === false) {
+    let max_width = 0;
+    let max_height = 5;
+    let placement = function() {
+      let r = [];
+      let x = max_width + 680;
+      let y = max_height + 350;
+      r = [x, y];
+      return r;
+    };
+
+    let xy = placement();
+    let div = document.createElement("div");
+    div.className = "block";
+    div.id = "windowBlock";
+    div.style.width = "50%";
+    div.style.height = "45vh";
+    div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
+    div.style.backgroundRepeat = "no-repeat";
+    div.style.backgroundSize = "cover";
+    div.style.backgroundPosition = "center";
+    div.style.color = "yellow";
+    div.style.position = "absolute";
+    div.style.top = xy[1] + 'px';
+    div.style.left = xy[0] + 'px';
+    blockW4 = true;
+    div.addEventListener("click", function() {
+      blockW4 = false;
+      div.remove();
+      // textScoreP1.innerText = "Score = " + scoreP1;
+    })
+    div.style.zIndex = 9998;
+    document.getElementById("gameWindow").appendChild(div);
+    let incognitoTime = 1 * 1;
+    incognitoTimer(incognitoTime);
+  }
+}
+
+
+function bugClicked() {
+  document.getElementById("bug").onclick = function() {
+
+    for (var i = 0; i < arrayIds.length; i++) {
+      document.getElementById(arrayIds[i]).remove();
+      console.log(arrayIds[i]);
     }
-    if (player2Turn === true) {
-      x = max_width + 680;
-    }
-    r = [x, y];
-    return r;
+    arrayIds = [];
   };
-
-  let xy = placement();
-  let div = document.createElement("div");
-  div.className = "block";
-  div.id = "windowBlock";
-  div.style.width = "50%";
-  div.style.height = "90vh";
-  div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
-  div.style.backgroundRepeat = "no-repeat";
-  div.style.backgroundSize = "cover";
-  div.style.backgroundPosition = "center";
-  div.style.color = "yellow";
-  div.style.position = "absolute";
-  div.style.top = xy[1] + 'px';
-  div.style.left = xy[0] + 'px';
-  div.addEventListener("click", function() {
-  div.remove();
-    // textScoreP1.innerText = "Score = " + scoreP1;
-  })
-  div.style.zIndex = 9998;
-  document.getElementById("gameWindow").appendChild(div);
 }
 
 // https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
@@ -658,7 +547,6 @@ function gameTimer(duration, display) {
 
     if (--timer < 0) {
       timer = duration;
-      clearInterval(turnInterval);
       clearInterval(gameInterval);
     }
 
@@ -666,22 +554,22 @@ function gameTimer(duration, display) {
   console.log(minutes);
 }
 
-function turnTimer(duration) {
+
+
+function incognitoTimer(duration) {
+  incognitoIsUsed = true;
   let timer = duration,
     minutes, seconds;
-turnInterval = setInterval(function() {
+let incognitioInterval = setInterval(function() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
-
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     if (--timer < 0) {
-      sentence = "change turn";
-      speak();
+      incognitoIsUsed = false;
       timer = duration;
-      changeTurns();
+      clearInterval(incognitioInterval);
     }
-
   }, 1000);
   console.log(minutes);
 }
@@ -692,42 +580,33 @@ function countdown() {
   let time = 60 * 3,
     display = document.querySelector('#time');
   gameTimer(time, display);
-  let turnTime = 30 * 1;
-  turnTimer(turnTime);
-
 };
 
-function changeTurns() {
+function changeTurns() {}
 
-  if (player1Turn === true) {
-    player1Turn = false;
-    player2Turn = true;
-    document.getElementById("windowBlock").remove();
-    setTimeout(block, 100);
-  } else if (player2Turn === true) {
-    player2Turn = false;
-    player1Turn = true;
-    document.getElementById("windowBlock").remove();
-    setTimeout(block, 100);
-  }
-    turnDisplay();
+function score(){
+  scoreP1 = arrayIds.length;
+  console.log(scoreP1);
 }
 
-function checkCoordinates(){
+function checkCoordinates() {
   if (hackerCoordinateX === 1 && hackerCoordinateY === 1) {
-  document.getElementById("hackerS").style.margin = "0";
+    document.getElementById("hackerS").style.margin = "0";
+    document.getElementById("bug").style.margin = "8% 20%";
   }
   if (hackerCoordinateX === 2 && hackerCoordinateY === 1) {
-  document.getElementById("hackerS").style.margin = "0px 0px 0px 50%";
+    document.getElementById("hackerS").style.margin = "0px 0px 0px 50%";
+    document.getElementById("bug").style.margin = "8% 73%";
   }
   if (hackerCoordinateX === 1 && hackerCoordinateY === 2) {
-  document.getElementById("hackerS").style.margin = "45vh 0px 0px";
+    document.getElementById("hackerS").style.margin = "45vh 0px 0px";
+    document.getElementById("bug").style.margin = "30% 20% 0";
   }
   if (hackerCoordinateX === 2 && hackerCoordinateY === 2) {
-  document.getElementById("hackerS").style.margin = "45vh 0px 0px 50%";
+    document.getElementById("hackerS").style.margin = "45vh 0px 0px 50%";
+    document.getElementById("bug").style.margin = "30% 73% 0";
   }
 }
-
 
 function speak() {
   // Set some random numbers for the voice's pitch and rate parameters for a bit of fun
@@ -737,40 +616,32 @@ function speak() {
   };
   // Use ResponsiveVoice to speak the string we generated, with UK English Male voice
   // and the options we just specified.
-  responsiveVoice.speak(sentence,'UK English Male',options);
+  responsiveVoice.speak(sentence, 'UK English Male', options);
 }
 
 function keyDown(e) {
   // console.log("keyDown");
   // console.log(heldKey);
-  if (player1Turn === true && e.key === currentkey) {
-    createImageP1();
-    changeKey();
-  } else {
-  }
-
-  if (player2Turn === true && e.key === currentkey) {
-    createImageP2();
-    changeKey();
-  } else {
-  }
-
   if (e.key === "q") {
     console.log("q");
     countdown();
+  }
+  if (e.key === "s") {
+    console.log("s");
+    score();
   }
   if (e.key === "m") {
     console.log("m");
     sentence = "meme";
     speak();
-createImage();
+    createImage();
   }
   if (e.key === "i") {
     console.log("i");
-blockWindow1();
-blockWindow2();
-blockWindow3();
-blockWindow4();
+    blockWindow1();
+    blockWindow2();
+    blockWindow3();
+    blockWindow4();
   }
   // up arrow	38
   if (e.keyCode === 38) {
@@ -796,8 +667,7 @@ blockWindow4();
     }
     checkCoordinates();
   }
-
-// down arrow	40
+  // down arrow	40
   if (e.keyCode === 40) {
     console.log("40");
     if (hackerCoordinateY === 1) {
@@ -806,10 +676,11 @@ blockWindow4();
     checkCoordinates();
   }
 }
-function keyUp(e) {
-  // console.log("KeyUp");
-  if (heldKey === currentHeldKey) {
-    heldKey = undefined;
-    console.log("lol");
-  }
-}
+
+// function keyUp(e) {
+//   // console.log("KeyUp");
+//   if (heldKey === currentHeldKey) {
+//     heldKey = undefined;
+//     console.log("lol");
+//   }
+// }
