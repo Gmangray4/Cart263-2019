@@ -116,6 +116,7 @@ author, and this description to match your project!
 // close braket	221
 // single quote	222
 
+
 let $statDiv;
 let $gameWindow;
 let $p1Role;
@@ -147,6 +148,14 @@ let blockW4 = false;
 
 let incognitoIsUsed = false;
 
+let memeAddSound;
+let memeRemoveSound;
+let gameStartSound;
+let incAddSound;
+let incRemoveSound;
+let bugSound;
+let gameOverSound;
+
 $(document).ready(setup);
 
 $(document).ready(function() {
@@ -157,12 +166,59 @@ $(document).ready(function() {
 
 
 function setup() {
+  memeAddSound = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/addMeme.wav'
+    }
+  });
+
+  memeRemoveSound = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/removeMeme.wav'
+    }
+  });
+
+  incAddSound = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/IncognitoAdd.wav'
+    }
+  });
+  incRemoveSound = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/IncognitoRemove.wav'
+    }
+  });
+  gameStartSound = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/gameStart.wav'
+    }
+  });
+  bugSound = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/bugClick.wav'
+    }
+  });
+  gameOverSound = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/gameOver.mp3'
+    }
+  });
   $statDiv = $('#statDiv');
   $gameWindow = $('#gameWindow');
   $p1Role = $('#p1Role');
   $p2Role = $('#p2Role');
   $roundNum = $('#roundNum');
   $(document).on("keydown", keyDown);
+  sentence = "Meme-ah-tahj";
+  speak();
+
 }
 
 function round1Start() {
@@ -170,6 +226,7 @@ function round1Start() {
   $("#statDiv").remove();
   round = 1;
   countdown();
+  gameStartSound.play();
 }
 
 function round1End() {
@@ -190,12 +247,14 @@ roundNum.innerText = '2';
 $("#endRound1Div").remove();
 round = 2;
 countdown();
+gameStartSound.play();
 }
 
 function round2End() {
   scoreP2 = arrayIds.length;
   round2EndDiv();
   incognitoRemoveAll();
+  gameOverSound.play();
 }
 
 function playAgain() {
@@ -209,6 +268,7 @@ p2Role.innerText = 'Hacker';
 roundNum.innerText = '1';
 $("#endRound2Div").remove();
 countdown();
+gameStartSound.play();
 scoreP1 = 0;
 scoreP2 = 0;
 round = 1;
@@ -255,15 +315,14 @@ function createImageW1() {
       let index = arrayIds.indexOf(img.id);
       if (index !== -1) arrayIds.splice(index, 1);
       img.remove();
+      memeRemoveSound.play();
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     window1.appendChild(img);
+    memeAddSound.play();
     // textScoreP1.innerText = "Score = " + scoreP1;
   }
 }
-
-
-
 
 function createImageW2() {
   if (hackerCoordinateX === 2 && hackerCoordinateY === 1 && blockW2 === true) {
@@ -299,9 +358,11 @@ function createImageW2() {
       let index = arrayIds.indexOf(img.id);
       if (index !== -1) arrayIds.splice(index, 1);
       img.remove();
+      memeRemoveSound.play();
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     window2.appendChild(img);
+    memeAddSound.play();
     // textScoreP1.innerText = "Score = " + scoreP1;
   }
 }
@@ -340,9 +401,11 @@ function createImageW3() {
       let index = arrayIds.indexOf(img.id);
       if (index !== -1) arrayIds.splice(index, 1);
       img.remove();
+      memeRemoveSound.play();
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     window3.appendChild(img);
+    memeAddSound.play();
     // textScoreP1.innerText = "Score = " + scoreP1;
   }
 }
@@ -381,10 +444,12 @@ function createImageW4() {
       let index = arrayIds.indexOf(img.id);
       if (index !== -1) arrayIds.splice(index, 1);
       img.remove();
+      memeRemoveSound.play();
 
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     window4.appendChild(img);
+    memeAddSound.play();
     // textScoreP1.innerText = "Score = " + scoreP1;
   }
 }
@@ -439,9 +504,11 @@ function blockWindow1() {
       if (index !== -1) arraysInC.splice(index, 1);
       blockW1 = false;
       div.remove();
+      incRemoveSound.play();
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     div.style.zIndex = 9998;
+    incAddSound.play();
     document.getElementById("gameWindow").appendChild(div);
     let incognitoTime = 1 * 1;
     incognitoTimer(incognitoTime);
@@ -482,9 +549,11 @@ function blockWindow2() {
       if (index !== -1) arraysInC.splice(index, 1);
       blockW2 = false;
       div.remove();
+      incRemoveSound.play();
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     div.style.zIndex = 9998;
+    incAddSound.play();
     document.getElementById("gameWindow").appendChild(div);
     let incognitoTime = 1 * 1;
     incognitoTimer(incognitoTime);
@@ -525,9 +594,11 @@ function blockWindow3() {
       if (index !== -1) arraysInC.splice(index, 1);
       blockW3 = false;
       div.remove();
+      incRemoveSound.play();
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     div.style.zIndex = 9998;
+    incAddSound.play();
     document.getElementById("gameWindow").appendChild(div);
     let incognitoTime = 1 * 1;
     incognitoTimer(incognitoTime);
@@ -568,9 +639,11 @@ function blockWindow4() {
       if (index !== -1) arraysInC.splice(index, 1);
       blockW4 = false;
       div.remove();
+      incRemoveSound.play();
       // textScoreP1.innerText = "Score = " + scoreP1;
     })
     div.style.zIndex = 9998;
+    incAddSound.play();
     document.getElementById("gameWindow").appendChild(div);
     let incognitoTime = 1 * 1;
     incognitoTimer(incognitoTime);
@@ -642,6 +715,7 @@ function bugClicked() {
       console.log(arrayIds[i]);
     }
     arrayIds = [];
+    bugSound.play();
   };
 }
 
@@ -732,7 +806,7 @@ function speak() {
   // Set some random numbers for the voice's pitch and rate parameters for a bit of fun
   let options = {
     pitch: Math.random(),
-    rate: Math.random()
+    rate: 0.6,
   };
   // Use ResponsiveVoice to speak the string we generated, with UK English Male voice
   // and the options we just specified.

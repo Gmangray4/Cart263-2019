@@ -27,13 +27,15 @@ header {
 }
 
 h1{
-	margin: 0.3em 5%;
+	margin: 0.3em 10%;
   color: white;
+    text-transform: capitalize;
 }
 
 h1.title{
   float: left;
-  margin: 6.5% 0 0 17%;
+
+  margin: 6.5% 0 0 13%;
 }
 
 div.nameTitle{
