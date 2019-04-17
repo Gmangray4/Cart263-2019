@@ -175,6 +175,7 @@ function round1Start() {
 function round1End() {
   scoreP1 = arrayIds.length;
   round1EndDiv();
+  incognitoRemoveAll();
 }
 
 function round2Start() {
@@ -194,6 +195,7 @@ countdown();
 function round2End() {
   scoreP2 = arrayIds.length;
   round2EndDiv();
+  incognitoRemoveAll();
 }
 
 function playAgain() {
