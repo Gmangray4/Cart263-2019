@@ -26,6 +26,34 @@ header {
   height: 3.5em;
 }
 
+h1{
+	margin: 0.3em 5%;
+  color: white;
+}
+
+h1.title{
+  float: left;
+  margin: 6.5% 0 0 17%;
+}
+
+div.nameTitle{
+  height: 35%;
+  width: 100%;
+  float: left;
+  	background-image:url("../assets/images/div/desktop.jpg");
+    background-size: 40% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    z-index: 9999;
+
+}
+img.nameTitle{
+  height: 100%;
+  width: 20%;
+  float: right;
+}
+
+
 div.main {
   border: none;
   border-color: black;
@@ -45,7 +73,7 @@ margin: 8% 20%;
 z-index: 2;
 }
 
-/* div.start{
+div.start{
   background-color: red;
   background-repeat: no-repeat;
   background-size: cover;
@@ -62,19 +90,45 @@ z-index: 2;
 }
 
 div.rules{
-  background-color: blue;
+  	background-color:#00004d;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  position: static;
+  display: flow-root;
   border: none;
   border-color: black;
+  margin: ;
+  z-index: 0;
+  padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
   width: 50%;
-  height: 80%;
+  height: 65%;
   float: left;
-  position: absolute;
-} */
+}
+
+p.rules{
+  color: #cccc00;
+  margin: 1%;
+}
+
+h2.rules{
+  color: #ffff00;
+  margin: 2%;
+}
+
+h3.rules{
+  color: #ffff00;
+  margin: 2%;
+}
+
+button.startButton{
+height:50%;
+width: 80%;
+margin: 10% 10%;
+background-color: orange;
+}
 
 div.round{
 	background-color: black;
@@ -93,9 +147,22 @@ div.round{
 	float: left;
 }
 
-h1{
-	margin: 0.3em 5%;
-  color: white;
+.r1p{
+  font-size: 2em;
+  margin: 0.5em;
+}
+
+.round2Button{
+float: right;
+margin: 2em 5em;
+height: 10%;
+width: 60%;
+}
+
+.r1EndImg{
+  height: 65%;
+  width: 80%;
+  margin: 0.5em 10%;
 }
 
 div.score{

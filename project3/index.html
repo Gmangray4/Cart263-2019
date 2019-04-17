@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
-<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+  <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 
   <!-- My script(s) -->
   <script src="js/script.js"></script>
@@ -22,44 +22,83 @@
 
 <body>
   <!-- HTML would go here if needed. -->
-  <header>
-    <!-- <div class="start">
-      <div class="rules">
-        <p></p>
-      </div>
-      <button onclick="changeAll()">Start</button>
-      <p> </p>
-    </div> -->
-    <div class="round">
-      <h1>GameName</h1>
+  <div id="statDiv" class="start">
+    <div class="nameTitle">
+      <h1 class="title">Title</h1>
+      <img class="nameTitle" src="assets/images/Capture.PNG" alt="image">
+      <img class="nameTitle" src="assets/images/519.jpg" alt="image">
+      <img class="nameTitle" src="assets/images/c32.jpg" alt="image">
     </div>
-    <div class="score">
-      <p id="textScoreP1" class="score"> Player 1: <spam>Remover</spam></p>
-    </div>
-    <div class="Timer">
-    <p class="Timer" id="time">Time</p>
-    </div>
-    <div class="score">
-      <p id="textScoreP2" class="score"> Player 2: <spam>Hacker</spam></p>
-    </div>
-    <div class="round">
-      <h1>Round 1</h1>
-    </div>
-  </header>
-  <div id="hackerS" class="hackerSelect">
-  </div>
-  <div class="main">
-    <div id="gameWindow" class="gameWindow">
-      <img id="bug" class="bugIcon" src="assets/images/bug.png" alt="bug" onclick="bugClicked()">
-      <!-- <img class="dude" src="assets//images/VT_Boy.png" alt="Vt_Boy"> -->
-      <div id="window1" class="deskTopWindow">
+    <div class="rules">
+      <h2 class="rules">About</h2>
+      <p class="rules">
+        Article 13 is now among us and now memes have become outlawed by the esptsliment. To protect rights holders in the internet age, the EU has install cyberbots to automatic hit users with copyright strikes if they identify anything that breaks
+        such law. Memes now are violators of the law and anyone caught with smuggling memes will be fined.
+      </p>
+      <h2 class="rules">Rules</h2>
+      <p class="rules">
+        Player’s take turns each round playing as the Remover using the mouse and the Hacker using the keyboard. Player 1 is the Remover and player 2 is the Hacker during round one. In round 2 change roles. After a round is completed the player who
+        was the Remover will have the number of memes left added to their score. At the end of the game whoever has the most memes shall loses the game.
+      </p>
+      <div>
+        <button class="startButton" onclick="round1Start()">Start Game</button>
       </div>
-      <div id="window2" class="deskTopWindow">
+    </div>
+    <div class="rules">
+      <h2 class="rules">Controls</h2>
+      <h3 class="rules">Remover</h3>
+      <p class="rules">
+        Remover must remove as many memes as they can before the round is over. The Remover removes memes by clicking on them with the mouse. However, if the hacker clicks on the hacker’s virus bug then all memes are removed. If there is an
+        incognito window blocking you then click on it to remove it.
+      </p>
+      <h3 class="rules">Hacker</h3>
+      <p class="rules">
+        Hacker: must add as many memes as they can to the 4 windows before the round is over. Hacker use the keyboard to do the following:
+        <br><br>
+        Arrow keys = change window and move the virus. You don’t want the Remover clicking on the virus so keep moving to save you from losing all your memes.
+        <br><br>
+        I = add an incognito to a window the remover is over. Memes can only be added under an incognito window.
+        <br><br>
+        M = to add memes when under an incognito window.
+        <br><br>
+        Tip: the hacker can also use memes as a shield to protect the virus from being clicked on.
+      </p>
+    </div>
+    </div>
+    <!-- GameScreen -->
+    <header>
+      <div class="round">
+        <h1>GameName</h1>
       </div>
-      <div id="window3" class="deskTopWindow">
+      <div class="score">
+        <p id="textScoreP1" class="score"> Player 1: <spam id="p1Role">Remover</spam>
+        </p>
       </div>
-      <div id="window4" class="deskTopWindow">
+      <div class="Timer">
+        <p class="Timer" id="time">Time</p>
       </div>
+      <div class="score">
+        <p id="textScoreP2" class="score"> Player 2: <spam id="p2Role">Hacker</spam>
+        </p>
+      </div>
+      <div class="round">
+        <h1>Round <span id="roundNum">1</span></h1>
+      </div>
+    </header>
+    <div id="hackerS" class="hackerSelect">
+    </div>
+    <div class="main">
+      <div id="gameWindow" class="gameWindow">
+        <img id="bug" class="bugIcon" src="assets/images/bug.png" alt="bug" onclick="bugClicked()">
+        <!-- <img class="dude" src="assets//images/VT_Boy.png" alt="Vt_Boy"> -->
+        <div id="window1" class="deskTopWindow">
+        </div>
+        <div id="window2" class="deskTopWindow">
+        </div>
+        <div id="window3" class="deskTopWindow">
+        </div>
+        <div id="window4" class="deskTopWindow">
+        </div>
 </body>
 
 </html>

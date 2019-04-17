@@ -117,9 +117,11 @@ author, and this description to match your project!
 // close braket	221
 // single quote	222
 
-
+let $statDiv;
 let $gameWindow;
-
+let $p1Role;
+let $p2Role;
+let $roundNum;
 
 let player1Turn = false;
 let player2Turn = false;
@@ -157,23 +159,61 @@ $(document).ready(function() {
 
 
 function setup() {
+  $statDiv = $('#statDiv');
   $gameWindow = $('#gameWindow');
+  $p1Role = $('#p1Role');
+  $p2Role = $('#p2Role');
+  $roundNum = $('#roundNum');
   $(document).on("keydown", keyDown);
 }
 
 function draw() {}
 
-function round1Start(){
+function round1Start() {
+  console.log("whahth");
+  $("#statDiv").remove();
+  countdown();
+}
+
+
+
+
+
+function round1End() {
+  scoreP1 = arrayIds.length;
+  round1EndDiv();
+}
+
+function round2Start() {
+  for (var i = 0; i < arrayIds.length; i++) {
+    document.getElementById(arrayIds[i]).remove();
+    console.log(arrayIds[i]);
+  }
+arrayIds = [];
+p1Role.innerText = 'Hacker';
+p2Role.innerText = 'Remover';
+roundNum.innerText = '2';
+$("#endRound1Div").remove();
 countdown();
 }
-function round1End(){
-scoreP1 = arrayIds.length;
+
+function round2End() {
+  scoreP2 = arrayIds.length;
 }
-function round2Start(){
+
+function playAgain() {
+  for (var i = 0; i < arrayIds.length; i++) {
+    document.getElementById(arrayIds[i]).remove();
+    console.log(arrayIds[i]);
+  }
+arrayIds = [];
+p1Role.innerText = 'Remover';
+p2Role.innerText = 'Hacker';
+roundNum.innerText = '1';
+$("#endRound2Div").remove();
 countdown();
-}
-function round2End(){
-scoreP2 = arrayIds.length;
+scoreP1 = 0;
+scoreP2 = 0;
 }
 
 function createImage() {
@@ -184,6 +224,8 @@ function createImage() {
 }
 
 function createImageW1() {
+
+
   if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === true) {
     let max_width = 400;
     let max_height = 150;
@@ -222,6 +264,9 @@ function createImageW1() {
     // textScoreP1.innerText = "Score = " + scoreP1;
   }
 }
+
+
+
 
 function createImageW2() {
   if (hackerCoordinateX === 2 && hackerCoordinateY === 1 && blockW2 === true) {
@@ -304,6 +349,7 @@ function createImageW3() {
     // textScoreP1.innerText = "Score = " + scoreP1;
   }
 }
+
 function createImageW4() {
   if (hackerCoordinateX === 2 && hackerCoordinateY === 2 && blockW4 === true) {
     let max_width = 400;
@@ -361,8 +407,6 @@ function turnDisplay() {
     textScoreP1.innerText = "click to remove!";
   }
 }
-
-
 
 function blockWindow1() {
   if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === false && incognitoIsUsed === false) {
@@ -521,6 +565,62 @@ function blockWindow4() {
 }
 
 
+function round1EndDiv() {
+  let div = document.createElement("div");
+  div.className = "round1OverDiv";
+  div.id = "endRound1Div";
+  div.style.width = "100%";
+  div.style.height = "90vh";
+  div.style.backgroundColor = "#01001A";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
+  div.style.color = "yellow";
+  div.style.position = "absolute"
+  div.style.zIndex = 9999;
+  document.getElementById("gameWindow").appendChild(div);
+  // div.style.top = placement("100px");
+  // div.style.left = placement("100px");
+  div.style.zIndex = 9999;
+  document.getElementById("gameWindow").appendChild(div);
+  div.innerHTML = '<button class="round2Button" onclick="round2Start()">Round 2</button>' + '<h3 class="r1p">Round 1 Results</h3>' + '<p class="r1p"> Player 1: <spam id="p1MemeCount">' + scoreP1 + '<spam> Memes Total!</p>' + '<p class="r1p"> Change roles: Player 1 is now the Hacker and Player 2 is the Remover</p>' + '<img class="r1EndImg" src="assets/images/euLock.jpg" alt="image">';
+}
+
+function round2EndDiv() {
+  let div = document.createElement("div");
+  div.className = "round2OverDiv";
+  div.id = "endRound2Div";
+  div.style.width = "100%";
+  div.style.height = "90vh";
+  div.style.backgroundColor = "#01001A";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
+  div.style.color = "yellow";
+  div.style.position = "absolute"
+  div.style.zIndex = 9999;
+  document.getElementById("gameWindow").appendChild(div);
+  // div.style.top = placement("100px");
+  // div.style.left = placement("100px");
+  div.style.zIndex = 9999;
+  document.getElementById("gameWindow").appendChild(div);
+
+
+  let whoWins;
+  let wholoses;
+  if (scoreP1 < scoreP2) {
+    whoWins = "1";
+    wholoses = "2";
+  } else if (scoreP1 > scoreP2) {
+    whoWins = "2";
+    wholoses = "1";
+  } else if (scoreP1 === scoreP2) {
+    whoWins = "None";
+    wholoses = "1 and 2";
+  }
+  div.innerHTML = '<button class="round2Button" onclick="playAgain()"> Play again</button>' + '<h3 class="r1p">Game Results</h3>' + '<p class="r1p"> Player 1: <spam id="p1MemeCount">' + scoreP1 + '</spam> Memes Total!</p><p class="r1p"> Player 2: <spam id="p2MemeCount">' + scoreP2 + '</spam> Memes Total!</p> <p  class="r1p" >Player <spam> ' + wholoses + '</spam> has the most memes and is therefore busted for Meme possession.</p> <p  class="r1p">Player<spam> ' + whoWins + ' </spam>wins!</p>';
+}
+
 function bugClicked() {
   document.getElementById("bug").onclick = function() {
 
@@ -554,13 +654,11 @@ function gameTimer(duration, display) {
   console.log(minutes);
 }
 
-
-
 function incognitoTimer(duration) {
   incognitoIsUsed = true;
   let timer = duration,
     minutes, seconds;
-let incognitioInterval = setInterval(function() {
+  let incognitioInterval = setInterval(function() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
     minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -584,7 +682,7 @@ function countdown() {
 
 function changeTurns() {}
 
-function score(){
+function score() {
   scoreP1 = arrayIds.length;
   console.log(scoreP1);
 }
@@ -624,7 +722,7 @@ function keyDown(e) {
   // console.log(heldKey);
   if (e.key === "q") {
     console.log("q");
-    countdown();
+    round2EndDiv();
   }
   if (e.key === "s") {
     console.log("s");
