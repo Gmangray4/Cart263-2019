@@ -4,7 +4,6 @@
 
 Title of Project
 Author Name
-
 This is a template. You must fill in the title,
 author, and this description to match your project!
 
@@ -132,7 +131,7 @@ let hackerCoordinateY = 1;
 let scoreP1 = 0;
 let scoreP2 = 0;
 
-let gameRuning = false;
+let round = 0;
 
 let sentence = "";
 
@@ -151,8 +150,6 @@ $(document).ready(setup);
 
 $(document).ready(function() {
   document.addEventListener("click", function() {
-
-
     console.log("click");
   });
 });
@@ -167,17 +164,12 @@ function setup() {
   $(document).on("keydown", keyDown);
 }
 
-function draw() {}
-
 function round1Start() {
   console.log("whahth");
   $("#statDiv").remove();
+  round = 1;
   countdown();
 }
-
-
-
-
 
 function round1End() {
   scoreP1 = arrayIds.length;
@@ -194,11 +186,13 @@ p1Role.innerText = 'Hacker';
 p2Role.innerText = 'Remover';
 roundNum.innerText = '2';
 $("#endRound1Div").remove();
+round = 2;
 countdown();
 }
 
 function round2End() {
   scoreP2 = arrayIds.length;
+  round2EndDiv();
 }
 
 function playAgain() {
@@ -214,6 +208,7 @@ $("#endRound2Div").remove();
 countdown();
 scoreP1 = 0;
 scoreP2 = 0;
+round = 1;
 }
 
 function createImage() {
@@ -224,7 +219,6 @@ function createImage() {
 }
 
 function createImageW1() {
-
 
   if (hackerCoordinateX === 1 && hackerCoordinateY === 1 && blockW1 === true) {
     let max_width = 400;
@@ -646,10 +640,14 @@ function gameTimer(duration, display) {
     display.textContent = minutes + ":" + seconds;
 
     if (--timer < 0) {
+      if (round === 1) {
+        round1End();
+      }else {
+        round2End();
+      }
       timer = duration;
       clearInterval(gameInterval);
     }
-
   }, 1000);
   console.log(minutes);
 }
@@ -675,17 +673,10 @@ function incognitoTimer(duration) {
 function countdown() {
   sentence = "start";
   speak();
-  let time = 60 * 3,
+  let time = 60 * 2,
     display = document.querySelector('#time');
   gameTimer(time, display);
 };
-
-function changeTurns() {}
-
-function score() {
-  scoreP1 = arrayIds.length;
-  console.log(scoreP1);
-}
 
 function checkCoordinates() {
   if (hackerCoordinateX === 1 && hackerCoordinateY === 1) {
