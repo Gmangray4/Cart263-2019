@@ -138,6 +138,7 @@ let sentence = "";
 let turnInterval;
 
 let arrayIds = [];
+let arraysInC = [];
 
 let blockW1 = false;
 let blockW2 = false;
@@ -417,7 +418,9 @@ function blockWindow1() {
     let xy = placement();
     let div = document.createElement("div");
     div.className = "block";
-    div.id = "windowBlock";
+    let id = "windowBlock" + 1;
+    div.id = id;
+    arraysInC.push(id);
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
@@ -430,6 +433,8 @@ function blockWindow1() {
     div.style.left = xy[0] + 'px';
     blockW1 = true;
     div.addEventListener("click", function() {
+      let index = arraysInC.indexOf(div.id);
+      if (index !== -1) arraysInC.splice(index, 1);
       blockW1 = false;
       div.remove();
       // textScoreP1.innerText = "Score = " + scoreP1;
@@ -456,7 +461,9 @@ function blockWindow2() {
     let xy = placement();
     let div = document.createElement("div");
     div.className = "block";
-    div.id = "windowBlock";
+    let id = "windowBlock" + 2;
+    div.id = id;
+    arraysInC.push(id);
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
@@ -469,6 +476,8 @@ function blockWindow2() {
     div.style.left = xy[0] + 'px';
     blockW2 = true;
     div.addEventListener("click", function() {
+      let index = arraysInC.indexOf(div.id);
+      if (index !== -1) arraysInC.splice(index, 1);
       blockW2 = false;
       div.remove();
       // textScoreP1.innerText = "Score = " + scoreP1;
@@ -495,7 +504,9 @@ function blockWindow3() {
     let xy = placement();
     let div = document.createElement("div");
     div.className = "block";
-    div.id = "windowBlock";
+    let id = "windowBlock" + 3;
+    div.id = id;
+    arraysInC.push(id);
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
@@ -508,6 +519,8 @@ function blockWindow3() {
     div.style.left = xy[0] + 'px';
     blockW3 = true;
     div.addEventListener("click", function() {
+      let index = arraysInC.indexOf(div.id);
+      if (index !== -1) arraysInC.splice(index, 1);
       blockW3 = false;
       div.remove();
       // textScoreP1.innerText = "Score = " + scoreP1;
@@ -534,7 +547,9 @@ function blockWindow4() {
     let xy = placement();
     let div = document.createElement("div");
     div.className = "block";
-    div.id = "windowBlock";
+    let id = "windowBlock" + 4;
+    div.id = id;
+    arraysInC.push(id);
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundImage = "url(../assets/images/div/incognito.png)";
@@ -547,6 +562,8 @@ function blockWindow4() {
     div.style.left = xy[0] + 'px';
     blockW4 = true;
     div.addEventListener("click", function() {
+      let index = arraysInC.indexOf(div.id);
+      if (index !== -1) arraysInC.splice(index, 1);
       blockW4 = false;
       div.remove();
       // textScoreP1.innerText = "Score = " + scoreP1;
@@ -624,6 +641,18 @@ function bugClicked() {
     }
     arrayIds = [];
   };
+}
+
+function incognitoRemoveAll(){
+  blockW1 = false;
+  blockW2 = false;
+  blockW3 = false;
+  blockW4 = false;
+
+  for (var i = 0; i < arraysInC.length; i++) {
+    document.getElementById(arraysInC[i]).remove();
+  }
+  arraysInC = [];
 }
 
 // https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
@@ -716,8 +745,7 @@ function keyDown(e) {
     round2EndDiv();
   }
   if (e.key === "s") {
-    console.log("s");
-    score();
+  incognitoRemoveAll();
   }
   if (e.key === "m") {
     console.log("m");
