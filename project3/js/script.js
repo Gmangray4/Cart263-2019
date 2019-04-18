@@ -122,6 +122,7 @@ let $gameWindow;
 let $p1Role;
 let $p2Role;
 let $roundNum;
+let $startButton;
 
 let player1Turn = false;
 let player2Turn = false;
@@ -156,6 +157,16 @@ let incRemoveSound;
 let bugSound;
 let gameOverSound;
 
+let bgm1;
+let bgm2;
+let bgm3;
+let bgm4;
+let bgm5;
+let bgm6;
+let bgm7;
+let menuBgm;
+
+let currentSong;
 $(document).ready(setup);
 
 $(document).ready(function() {
@@ -164,8 +175,58 @@ $(document).ready(function() {
   });
 });
 
-
 function setup() {
+  menuBgm = new Pizzicato.Sound({
+    source: 'file',
+    volume: 0.3,
+    options: {
+      path: 'assets/sounds/Music/Menu.mp3'
+    }
+  });
+  bgm1 = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/Music/bgm1.mp3'
+    }
+  });
+  bgm2 = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/Music/bgm2.mp3'
+    }
+  });
+  bgm3 = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/Music/bgm3.mp3'
+    }
+  });
+  bgm4 = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/Music/bgm4.mp3'
+    }
+  });
+  bgm5 = new Pizzicato.Sound({
+    source: 'file',
+    volume: 0.3,
+    options: {
+      path: 'assets/sounds/Music/bgm5.mp3'
+    }
+  });
+  bgm6 = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: 'assets/sounds/Music/bgm6.mp3'
+    }
+  });
+  bgm7 = new Pizzicato.Sound({
+    source: 'file',
+    volume: 0.3,
+    options: {
+      path: 'assets/sounds/Music/bgm7.mp3'
+    }
+  });
   memeAddSound = new Pizzicato.Sound({
     source: 'file',
     options: {
@@ -210,6 +271,8 @@ function setup() {
       path: 'assets/sounds/gameOver.mp3'
     }
   });
+
+  $startButton = $('#startButton');
   $statDiv = $('#statDiv');
   $gameWindow = $('#gameWindow');
   $p1Role = $('#p1Role');
@@ -217,22 +280,32 @@ function setup() {
   $roundNum = $('#roundNum');
   $(document).on("keydown", keyDown);
   sentence = "Meme-ah-tahj";
-  speak();
-
+  lodingDiv();
 }
 
 function round1Start() {
+  bgm1.volume = 0.1;
+  bgm2.volume = 0.1;
+  bgm3.volume = 0.1;
+  bgm4.volume = 0.1;
+  bgm5.volume = 0.1;
+  bgm6.volume = 0.1;
+  bgm7.volume = 0.1;
   console.log("whahth");
   $("#statDiv").remove();
   round = 1;
   countdown();
   gameStartSound.play();
+  bgmToPlay();
+  menuBgm.stop();
 }
 
 function round1End() {
   scoreP1 = arrayIds.length;
   round1EndDiv();
   incognitoRemoveAll();
+  bgmToStop();
+  menuBgm.play();
 }
 
 function round2Start() {
@@ -248,13 +321,18 @@ $("#endRound1Div").remove();
 round = 2;
 countdown();
 gameStartSound.play();
+bgmToPlay();
+menuBgm.stop();
+// bgmToPlay();
 }
 
 function round2End() {
   scoreP2 = arrayIds.length;
+  bgmToStop();
   round2EndDiv();
   incognitoRemoveAll();
   gameOverSound.play();
+  menuBgm.play();
 }
 
 function playAgain() {
@@ -269,9 +347,11 @@ roundNum.innerText = '1';
 $("#endRound2Div").remove();
 countdown();
 gameStartSound.play();
+bgmToPlay();
 scoreP1 = 0;
 scoreP2 = 0;
 round = 1;
+menuBgm.stop();
 }
 
 function createImage() {
@@ -707,6 +787,29 @@ function round2EndDiv() {
   div.innerHTML = '<button class="round2Button" onclick="playAgain()"> Play again</button>' + '<h3 class="r1p">Game Results</h3>' + '<p class="r1p"> Player 1: <spam id="p1MemeCount">' + scoreP1 + '</spam> Memes Total!</p><p class="r1p"> Player 2: <spam id="p2MemeCount">' + scoreP2 + '</spam> Memes Total!</p> <p  class="r1p" >Player <spam> ' + wholoses + '</spam> has the most memes and is therefore busted for Meme possession.</p> <p  class="r1p">Player<spam> ' + whoWins + ' </spam>wins!</p>';
 }
 
+function lodingDiv() {
+  let div = document.createElement("div");
+  div.className = "loudingDev";
+  div.id = "loudDev";
+  div.style.width = "100%";
+  div.style.height = "100vh";
+  div.style.backgroundColor = "#01001A";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.backgroundSize = "cover";
+  div.style.backgroundPosition = "center";
+  div.style.color = "yellow";
+  div.style.position = "absolute"
+  div.style.zIndex = 9999;
+  document.getElementById("gameWindow").appendChild(div);
+  // div.style.top = placement("100px");
+  // div.style.left = placement("100px");
+  div.style.zIndex = 9999;
+  document.getElementById("gameWindow").appendChild(div);
+
+  div.innerHTML = '<p class="loading">Loading Meme Sabotage...<br><br> Please Hold your Memes Down and Thanks for Wating....</p>';
+  loadTimeStart();
+}
+
 function bugClicked() {
   document.getElementById("bug").onclick = function() {
 
@@ -731,6 +834,31 @@ function incognitoRemoveAll(){
   arraysInC = [];
 }
 
+function loadTimeStart() {
+  let time = 25 * 1;
+  loadTime(time);
+};
+
+function loadTime(duration) {
+  let timer = duration,
+    minutes, seconds;
+  let timeforload = setInterval(function() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    if (--timer < 0) {
+      clearInterval(timeforload);
+      document.getElementById("loudDev").remove();
+      menuBgm.play();
+      menuBgm.loop();
+    }
+  }, 1000);
+  console.log(minutes);
+}
+
+
+
 // https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
 function gameTimer(duration, display) {
   let timer = duration,
@@ -750,8 +878,8 @@ function gameTimer(duration, display) {
       }else {
         round2End();
       }
-      timer = duration;
       clearInterval(gameInterval);
+      timer = duration;
     }
   }, 1000);
   console.log(minutes);
@@ -813,15 +941,54 @@ function speak() {
   responsiveVoice.speak(sentence, 'UK English Male', options);
 }
 
+//picks a song to play.
+function bgmToPlay(){
+
+currentSong = Math.floor((Math.random() * 7) + 1);
+
+if (currentSong === 1) {
+bgm1.play();
+}else if (currentSong === 2) {
+bgm2.play();
+}else if (currentSong === 3) {
+bgm3.play();
+}else if (currentSong === 4) {
+bgm4.play();
+}else if (currentSong === 5) {
+bgm5.play();
+}else if (currentSong === 6) {
+bgm6.play();
+}else if (currentSong === 7) {
+bgm7.play();
+}
+}
+
+//stops which song is currently playing
+function bgmToStop(){
+
+if (currentSong === 1) {
+bgm1.stop();
+}else if (currentSong === 2) {
+bgm2.stop();
+}else if (currentSong === 3) {
+bgm3.stop();
+}else if (currentSong === 4) {
+bgm4.stop();
+}else if (currentSong === 5) {
+bgm5.stop();
+}else if (currentSong === 6) {
+bgm6.stop();
+}else if (currentSong === 7) {
+bgm7.stop();
+}
+}
+
 function keyDown(e) {
   // console.log("keyDown");
   // console.log(heldKey);
   if (e.key === "q") {
     console.log("q");
     round2EndDiv();
-  }
-  if (e.key === "s") {
-  incognitoRemoveAll();
   }
   if (e.key === "m") {
     console.log("m");

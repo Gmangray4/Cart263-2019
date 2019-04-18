@@ -11,6 +11,10 @@ body {
   overflow: hidden;
 }
 
+/* button.startButton{
+  display: none;
+} */
+
 header {
   background-color: #01001A;
   background-repeat: no-repeat;
@@ -165,6 +169,13 @@ width: 60%;
   height: 65%;
   width: 80%;
   margin: 0.5em 10%;
+}
+
+.loading{
+  font-size: 5em;
+  height: 100%;
+  width: 100%;
+  margin: 0.5em 5%;
 }
 
 div.score{
