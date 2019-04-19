@@ -166,15 +166,15 @@ width: 60%;
 }
 
 .r1EndImg{
-  height: 65%;
+  height: 60%;
   width: 80%;
-  margin: 0.5em 10%;
+  margin: 0.1em 10%;
 }
 
 .loading{
-  font-size: 5em;
+  font-size: 4em;
   height: 100%;
-  width: 100%;
+  width: 90%;
   margin: 0.5em 5%;
 }
 
