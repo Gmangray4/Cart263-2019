@@ -274,6 +274,7 @@ div.deskTopWindow {
 }
 
 .block{
+  background-color: black;
   background-image:url("../assets/images/div/hey.jpg");
   background-repeat: no-repeat;
   background-size: cover;
