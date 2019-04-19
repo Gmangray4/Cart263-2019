@@ -1,0 +1,287 @@
+/*********************************************
+
+This is the style file for this project.
+
+**********************************************/
+body {
+  max-width: 1000%;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* button.startButton{
+  display: none;
+} */
+
+header {
+  background-color: #01001A;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-color: black;
+  margin: 0;
+  z-index: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  height: 3.5em;
+}
+
+h1{
+	margin: 0.3em 10%;
+  color: white;
+    text-transform: capitalize;
+}
+
+h1.title{
+  float: left;
+
+  margin: 6.5% 0 0 13%;
+}
+
+div.nameTitle{
+  height: 35%;
+  width: 100%;
+  float: left;
+  	background-image:url("../assets/images/div/desktop.jpg");
+    background-size: 40% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    z-index: 9999;
+
+}
+img.nameTitle{
+  height: 100%;
+  width: 20%;
+  float: right;
+}
+
+
+div.main {
+  border: none;
+  border-color: black;
+  margin: 0;
+  z-index: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+img.bugIcon{
+position: absolute;
+width: 5em;
+height: 5em;
+margin: 8% 20%;
+z-index: 2;
+}
+
+div.start{
+  background-color: red;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-color: black;
+  z-index: 9999;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  float: left;
+  position: absolute;
+}
+
+div.rules{
+  	background-color:#00004d;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: static;
+  display: flow-root;
+  border: none;
+  border-color: black;
+  margin: ;
+  z-index: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 50%;
+  height: 65%;
+  float: left;
+}
+
+p.rules{
+  color: #cccc00;
+  margin: 1%;
+}
+
+h2.rules{
+  color: #ffff00;
+  margin: 2%;
+}
+
+h3.rules{
+  color: #ffff00;
+  margin: 2%;
+}
+
+button.startButton{
+height:50%;
+width: 80%;
+margin: 10% 10%;
+background-color: orange;
+}
+
+div.round{
+	background-color: black;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border: none;
+	border-color: black;
+	margin: 0;
+	z-index: 0;
+
+	overflow-x: hidden;
+	overflow-y: hidden;
+	width: 20%;
+	height: 95%;
+	float: left;
+}
+
+.r1p{
+  font-size: 2em;
+  margin: 0.5em;
+}
+
+.round2Button{
+float: right;
+margin: 2em 5em;
+height: 10%;
+width: 60%;
+}
+
+.r1EndImg{
+  height: 60%;
+  width: 80%;
+  margin: 0.1em 10%;
+}
+
+.loading{
+  font-size: 4em;
+  height: 100%;
+  width: 90%;
+  margin: 0.5em 5%;
+}
+
+div.score{
+	background-color: #FFCC00;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border: none;
+	border-color: black;
+	margin: 0;
+	z-index: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	width: 20%;
+	height: 95%;
+	float: left;
+}
+
+p.score{
+  font-size: 18px;
+  text-transform: capitalize;
+	height: auto;
+	width: 8em;
+	margin: 1em 30%;
+}
+
+div.Timer{
+  background-color: #003399;
+	background-image:url("../assets/images/div/eu.png");
+	background-repeat: no-repeat;
+	background-size: auto 4.3em;
+	background-position: center;
+	border: none;
+	border-color: black;
+	margin: 0;
+	z-index: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	width: 20%;
+	height: 95%;
+	float: left;
+}
+
+p.Timer{
+color: yellow;
+height: auto;
+width: 5em;
+margin: 1em 43%;
+}
+
+
+div.gameWindow {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-color: black;
+  margin: 0;
+  z-index: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  height: 90vh;
+}
+
+
+div.hackerSelect{
+  background: none;
+  border-style: solid;
+  border-color: yellow;
+  overflow: hidden;
+  z-index: 1;
+  width: 50%;
+  height: 45%;
+  position: absolute;
+}
+
+div.deskTopWindow {
+  background-image:url("../assets/images/div/desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  position: static;
+  display: flow-root;
+  border: none;
+  border-color: black;
+  margin: 0;
+  z-index: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 50%;
+  height: 45vh;
+  float: left;
+}
+
+.block{
+  background-image:url("../assets/images/div/hey.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+img.memeImg {
+  z-index: 2;
+  display: run-in;
+  position: absolute;
+}
