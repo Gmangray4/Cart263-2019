@@ -491,7 +491,7 @@ function blockWindow1() {
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundColor = "black";
-    div.style.backgroundImage = 'url("../assets/images/hey.jpg")';
+    div.style.backgroundImage = 'url("../assets/images/CCc2w.png")';
     div.style.backgroundRepeat = "no-repeat";
     div.style.backgroundSize = "cover";
     div.style.backgroundPosition = "center";
@@ -536,7 +536,7 @@ function blockWindow2() {
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundColor = "black";
-    div.style.backgroundImage = 'url("../assets/images/hey.jpg")';
+    div.style.backgroundImage = 'url("../assets/images/CCc2w.png")';
     div.style.backgroundRepeat = "no-repeat";
     div.style.backgroundSize = "cover";
     div.style.backgroundPosition = "center";
@@ -581,7 +581,7 @@ function blockWindow3() {
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundColor = "black";
-    div.style.backgroundImage = 'url("../assets/images/hey.jpg")';
+    div.style.backgroundImage = 'url("../assets/images/CCc2w.png")';
     div.style.backgroundRepeat = "no-repeat";
     div.style.backgroundSize = "cover";
     div.style.backgroundPosition = "center";
@@ -626,7 +626,7 @@ function blockWindow4() {
     div.style.width = "50%";
     div.style.height = "45vh";
     div.style.backgroundColor = "black";
-    div.style.backgroundImage = 'url("../assets/images/hey.jpg")';
+    div.style.backgroundImage = 'url("../assets/images/CCc2w.png")';
     div.style.backgroundRepeat = "no-repeat";
     div.style.backgroundSize = "cover";
     div.style.backgroundPosition = "center";
