@@ -172,6 +172,7 @@ width: 60%;
 }
 
 .loading{
+  background-image:url("../assets/images/CCc2w.png");
   font-size: 4em;
   height: 100%;
   width: 90%;
