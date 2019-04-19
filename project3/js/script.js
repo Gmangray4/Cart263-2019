@@ -196,6 +196,12 @@ function round1Start() {
   bgm6.volume = 0.1;
   bgm7.volume = 0.1;
 // remove the rules screen
+// remove all memes in case players added them on the home screen
+for (var i = 0; i < arrayIds.length; i++) {
+  document.getElementById(arrayIds[i]).remove();
+  console.log(arrayIds[i]);
+}
+incognitoRemoveAll();
   $("#statDiv").remove();
 // tell the system that it is now round 1
   round = 1;
