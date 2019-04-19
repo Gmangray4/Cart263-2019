@@ -273,8 +273,8 @@ div.deskTopWindow {
   float: left;
 }
 
-div.block{
-  background-image:url("../assets/images/div/image.jpg");
+.block{
+  background-image:url("../assets/images/div/hey.jpg");
 }
 
 img.memeImg {
