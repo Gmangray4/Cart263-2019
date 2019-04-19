@@ -201,6 +201,7 @@ for (var i = 0; i < arrayIds.length; i++) {
   document.getElementById(arrayIds[i]).remove();
   console.log(arrayIds[i]);
 }
+arrayIds = [];
 incognitoRemoveAll();
   $("#statDiv").remove();
 // tell the system that it is now round 1
