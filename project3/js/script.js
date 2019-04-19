@@ -220,7 +220,6 @@ function round1End() {
   //display the round 1 over div/screen
   round1EndDiv();
   //Remove all incognito windows
-  incognitoRemoveAll();
   // stop the current song
   bgmToStop();
   menuBgm.play();
@@ -233,7 +232,7 @@ function round2Start() {
     console.log(arrayIds[i]);
   }
 arrayIds = [];
-
+incognitoRemoveAll();
 // set the text for player 1 to hacker
 p1Role.innerText = 'Hacker';
 // set the text for player 2 to Remover
@@ -258,7 +257,6 @@ function round2End() {
   bgmToStop();
   //add the end game Results screen
   round2EndDiv();
-  incognitoRemoveAll();
   gameOverSound.play();
   menuBgm.play();
 }
@@ -271,6 +269,7 @@ function playAgain() {
     console.log(arrayIds[i]);
   }
 arrayIds = [];
+incognitoRemoveAll();
 p1Role.innerText = 'Remover';
 p2Role.innerText = 'Hacker';
 roundNum.innerText = '1';
