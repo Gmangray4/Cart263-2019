@@ -763,7 +763,6 @@ function loadTime(duration) {
       clearInterval(timeforload);
       document.getElementById("loudDev").remove();
       menuBgm.play();
-      menuBgm.loop();
     }
   }, 1000);
   console.log(minutes);
