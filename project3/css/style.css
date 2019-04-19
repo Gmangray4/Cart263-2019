@@ -275,6 +275,9 @@ div.deskTopWindow {
 
 .block{
   background-image:url("../assets/images/div/hey.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 img.memeImg {
