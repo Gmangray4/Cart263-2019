@@ -274,7 +274,7 @@ div.deskTopWindow {
 }
 
 div.block{
-  background-image:url(../assets/images/div/incognito.png);
+  background-image:url("../assets/images/div/incognito.png");
 }
 
 /* div.bottomBox {

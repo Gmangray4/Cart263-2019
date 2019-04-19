@@ -894,11 +894,6 @@ bgm7.stop();
 }
 
 function keyDown(e) {
-
-  if (e.key === "q") {
-    console.log("q");
-    round2EndDiv();
-  }
   // key to make memes
   if (e.key === "m") {
     console.log("m");
